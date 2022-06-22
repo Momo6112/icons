@@ -14,7 +14,6 @@ import streamlit as st
 from streamlit_lottie import st_lottie
 from streamlit_lottie import st_lottie_spinner
 import time
-import pages.registrieren
 import bcrypt
 
 conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com",
