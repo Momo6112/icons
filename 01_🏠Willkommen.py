@@ -25,6 +25,7 @@ engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0f
 cursor = conn.cursor() 
 
 def app():
+    st.set_page_config("DB","house",layout="wide")
     st.title("DB Price App")
     st.header("Anleitung")
     image=Image.open("website.png")
