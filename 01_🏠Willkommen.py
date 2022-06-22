@@ -110,6 +110,8 @@ def app():
                     
         if register:   
             add_userdata(eingabe,passw1)
+app()
+                         
             
             
             
