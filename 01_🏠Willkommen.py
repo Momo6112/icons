@@ -28,11 +28,10 @@ def app():
     st.title("DB Price App")
     st.header("Anleitung")
     image=Image.open("website.png")
-    c=st.container()
         
     st.image(image,caption="DB Ticker-App")
 
-    st.subheader("Beschreibung"),
+    st.subheader("Beschreibung")
     #load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_E3exCx.json")
     col1,col2,col3=st.columns(3)
     if "einlogg" not in st.session_state:
