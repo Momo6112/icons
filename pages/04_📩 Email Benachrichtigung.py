@@ -80,8 +80,8 @@ def app():
             ]
     liste=[]
     tabell2=cursor.execute("SELECT preis from %s ",[boxen1])
-    for pr in tabell2:
-            liste.append(tabell2[0])
+    #liste.append(tabell2[0])
+    print(tabell2)
                         
     preisangabe = st.slider("Ihr gewünschter Höchstpreis:")
     with st.form(key='form1'):
