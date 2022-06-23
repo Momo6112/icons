@@ -25,7 +25,14 @@ engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0f
 global cursor 
 cur = conn.cursor()
 
-
+def load_lottieurl(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
+lottie_url_hello = "https://assets2.lottiefiles.com/private_files/lf30_l9qwggrk.json"
+lottie_hello = load_lottieurl(lottie_url_hello)
+st_lottie(lottie_hello, key="hello")
 def app():
     st.set_page_config("DB","house",layout="wide")
     st.title("DB Price App")
@@ -117,6 +124,7 @@ def app():
         if register:   
             add_userdata(eingabe,passw1)
 app()
+load_lottieurl("https://assets2.lottiefiles.com/private_files/lf30_l9qwggrk.json")
                          
             
             
