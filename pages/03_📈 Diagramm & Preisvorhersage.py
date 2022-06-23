@@ -30,7 +30,7 @@ def app():
         loginpassw=st.text_input("Passwort:",st.session_state.passw)
         anfragenlistebenutzer=[]
         
-    abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
+        abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
           if not cursor.fetchone():  # An empty result evaluates to False.
               st.write("Kein Benutzer mit diesem Benutzernamen")
           else:
