@@ -77,7 +77,7 @@ def app():
                     st.warning("Falsches Passwort")
                 else:
                     st.success("Sie haben sich erfolgreich eingeloggt")
-                    with col3:
+                    with col2:
                       with st.form("log3"):
                         weiter=st.form_submit_button("Fortfahren zur Anfrage")
                         weiter2=st.form_submit_button("Fortfahren zum Diagramm/Preisvorhersage")
