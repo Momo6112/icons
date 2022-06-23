@@ -11,7 +11,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 
 def app():
-    st.write(st.session_state.user,
+    st.write(st.session_state.name,
             "Möchten Sie sich wirklich ausloggen?")
     with st.form("button"):
         ja=st.form_submit_button(label="Ja")
