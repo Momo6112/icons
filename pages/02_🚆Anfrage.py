@@ -277,7 +277,7 @@ def app():
                                   anfrage_zeit=time.strftime("%H:%M")
                                   result=pandas.DataFrame(columns=["anfrage_tag","anfrage_uhrzeit","startbahnhof", "zielbahnhof","fahrzeit","preis"])
                                   result.loc[len(result)]=[anfrage_tage,anfrage_zeit,station1,station2,zeiten_zv1,preis_float]
-                                  result.to_sql(name=st.session_state.wunsche, con=engine, if_exists="append" )
+                                  result.to_sql(name=wunsch, con=engine, if_exists="append" )
                                   result=result[0:0]
                                 
                                 
