@@ -80,6 +80,11 @@ def app():
             ]
     liste=[]
     tabell2=cursor.execute("SELECT preis from %s ",[boxen1])
+    if tabell2==None:
+        st.info("Keine Tabelle vorhande") 
+      else:
+        for tabelle in tabell2:
+            liste.append(tabelle[0])
     #liste.append(tabell2[0])
     print(tabell2)
                         
