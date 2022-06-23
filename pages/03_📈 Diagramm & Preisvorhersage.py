@@ -8,7 +8,6 @@ import psycopg2
 import psycopg2.extras
 from sqlalchemy import create_engine
 import plotly.express as px
-import mysql.connector
 from tensorflow import keras 
 from keras.models import Sequential
 from keras.layers import Dense, LSTM, Dropout
