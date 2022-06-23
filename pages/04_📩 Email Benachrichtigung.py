@@ -67,18 +67,18 @@ def app():
     smtp_server = "smtp.gmail.com"
     yag = yagmail.SMTP("dbpriceapp@gmail.com","jeedmppkysrivewz")
     contents = [
-            "Ein neuer Preis ihrer Verbindung ist verfuegbar."
+            "Hallo :)"
+             "\n" 
+            "Der Preis Ihrer favoritisierten Verbindung ist auf Ihren Wunschpreis gefallen."
             "\n"
-            "Kaufen Sie sich ein Ticket."
+            "Kaufen Sie sich also am besten direkt ein Ticket auf der Seite der DeutschenBahn."
             "\n"
-
-            "Freundlicher Gruss"
+            "Freundliche Grüße und eine gute Fahrt!"
             "\n"
             "\n"
-            "DBTickeralert"
+            "DB-Price-App"
             ]
-    liste=[1,2,3,4,5,6,7,8,9,10]
-
+    liste=[cursor.execute("SELECT preis from %s ",[boxen1])]
                     
     preisangabe = st.slider("Ihr gewünschter Höchstpreis:")
     with st.form(key='form1'):
@@ -86,11 +86,12 @@ def app():
             if submit_buttonpreis:
                 st.write("Sie erhalten eine Email Benachrichitung wenn sich der Preis unter",preisangabe ,"€ befindet") 
                 for i in range(len(liste)):
-                    if liste[i]<=preisangabe:
+                    if [i]<=preisangabe:
                         yag.send(to=ganzeemail,
-                        subject='Neuer Preis',
+                        subject='Wunschpreis',
                         contents=contents)
                     else:
                         if preisangabe>liste[i]:
                             st.write("Ihre Kaufbereitschaft ist sehr hoch")
+    
 app()
