@@ -51,18 +51,19 @@ def app():
                     st.session_state.tabe= True
                 for tabell in alleanfragen:
                     anfragenlistebenutzer.append(tabell[0])
-                boxen=st.selectbox("Tabelle:", anfragenlistebenutzer)
-                if "auswa" not in st.session_state :
-                    st.session_state.auswa= True
+                with coll3:    
+                  boxen=st.selectbox("Tabelle:", anfragenlistebenutzer)
+                  if "auswa" not in st.session_state :
+                      st.session_state.auswa= True
 
-                data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
+                  data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
 
-                df_diagramm= pd.DataFrame(data_tabelle)
-                
-                
-                date_list = df_diagramm['anfrage_tag'].unique()
-                
-                with coll3:
+                  df_diagramm= pd.DataFrame(data_tabelle)
+
+
+                  date_list = df_diagramm['anfrage_tag'].unique()
+
+
 
                   date = st.selectbox("Wähle ein Datum:",date_list)
 
