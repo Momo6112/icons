@@ -43,6 +43,7 @@ cursor = conn.cursor()
 
 def app(): 
     st.subheader("Benachrichtigung anfordern")
+    anfragenlistebenutzer=[]
     user=st.text_input("Benutzer:",st.session_state.name)
     emailteil1=st.text_input("Emailnamen eingeben")
     emaildomains=["@gmail.com","@gmx.de","@web.de"]
