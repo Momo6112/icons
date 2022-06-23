@@ -52,8 +52,8 @@ def app():
               for tabell in alleanfragen:
                   anfragenlistebenutzer.append(tabell[0])   
               boxen=st.selectbox("Tabelle:", anfragenlistebenutzer)
-                if "auswa" not in st.session_state :
-                      st.session_state.auswa= True
+              if "auswa" not in st.session_state :
+                st.session_state.auswa= True
 
              data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
 
