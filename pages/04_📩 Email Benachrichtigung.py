@@ -79,7 +79,7 @@ def app():
             "DB-Price-App"
             ]
     liste=[]
-    tabell2=cursor.execute("SELECT preis from %s ",[boxen1])
+    tabell2=cursor.execute(f"SELECT preis From {boxen1} ")
     if tabell2==None:
         st.info("Keine Tabelle vorhande") 
     else:
