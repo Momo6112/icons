@@ -95,3 +95,5 @@ def app():
             )
    st.write(strings)
    load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_E3exCx.json")
+   
+app()
