@@ -23,11 +23,13 @@ engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0f
 cursor = conn.cursor()
 
 def app():
-    coll1,coll2=st.columns(2)
+    coll1,coll2,coll3,coll4=st.columns(4)
     with coll1:
         loginname=st.text_input("Benutzer: ", st.session_state.name)
+    with coll2:
         loginpassw=st.text_input("Passwort:",st.session_state.passw)
         anfragenlistebenutzer=[]
+    with coll3:
         with st.form("akt"):
           akzept=st.form_submit_button(label="Fortfahren")
 
