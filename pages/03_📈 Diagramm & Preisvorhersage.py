@@ -29,8 +29,7 @@ def app():
   with coll2:
     loginpassw=st.text_input("Passwort:",st.session_state.passw)
     anfragenlistebenutzer=[]
-  with coll3:  
-    date = st.selectbox("Wähle ein Datum:",date_list)
+
     
     
     abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
