@@ -22,7 +22,7 @@ from distutils.cmd import Command
 import datetime 
 from streamlit.cli import main  
 from streamlit.proto.RootContainer_pb2 import RootContainer
-import pandas as pd 
+import pandas 
 import plotly.figure_factory as ff
 import numpy as np
 from streamlit_option_menu import option_menu 
