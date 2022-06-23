@@ -45,11 +45,11 @@ def app():
         st.session_state.reg=True
     with col1:
         with st.form("log2"):
-            einlogg=st.form_submit_button("Einloggen",on_click=callback1)
+            einlogg=st.button("Einloggen",on_click=callback1)
                 
     with col2:
         with st.form("log1"):
-            reg=st.form_submit_button("Registrieren",on_click=callback2)
+            reg=st.button("Registrieren",on_click=callback2)
         
    
             
@@ -70,6 +70,10 @@ def app():
                     st.warning("Falsches Passwort")
                 else:
                     st.success("Sie haben sich erfolgreich eingeloggt")
+                    with st.form("log3"):
+                      weiter=st.form_submit_button("Fortfahren zur Anfrage")
+                      weiter2=st.form_submit_button("Fortfahren zum Diagramm/Preisvorhersage")
+                      
             
                     if 'name' not in st.session_state:
                         st.session_state.name =loginn
@@ -103,6 +107,7 @@ def app():
                     result.to_sql(name="login", con=engine, if_exists="append")
                     result=result[0:0]
                     st.info("Erfolgreich registriert")
+                    st.success("Sie können nun zum Login")
                 
                 else:
                     st.warning("Der Benutzername existiert bereits")
