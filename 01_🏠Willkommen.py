@@ -47,8 +47,8 @@ def app():
         Pages ={"Einloggen","Registrieren"}
             
     
-    
-        neuebox=st.selectbox("Wähle eine der folgenden Funktionen",Pages.keys())
+        with st.form("log1"):
+          neuebox=st.selectbox("Wähle eine der folgenden Funktionen",Pages.keys())
                 
     
         
