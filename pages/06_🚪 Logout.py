@@ -7,12 +7,6 @@ from PIL import Image
 import streamlit as st
 import streamlit_multipage
 from streamlit_multipage.multipage import MultiPage
-import pages.home
-import pages.diagramm
-import pages.registrieren
-import pages.mail_nachricht
-import pages.kontakt
-import pages.websiteaufruf
 import streamlit as st
 from streamlit_option_menu import option_menu
 
