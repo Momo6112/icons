@@ -32,9 +32,8 @@ def app():
     with st.form("loge"):
          fort=st.form_submit_button("Bestätigen")
          
-         if fort:
-        
-            abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
+    if fort:
+      abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
               if not cursor.fetchone():  # An empty result evaluates to False.
                   st.write("Kein Benutzer mit diesem Benutzernamen")
               else:
@@ -183,6 +182,8 @@ def app():
                           preis2=str(round(preis, 2))+ ' EUR'
                           st.subheader('Der prognostizierte Preis beträgt morgen:  ')
                           st.subheader(preis2)
+        
+            
            
     
     
