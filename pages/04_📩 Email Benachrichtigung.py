@@ -70,4 +70,5 @@ def app():
                         contents=contents)
                     else:
                         if preisangabe>liste[i]:
-                            st.write("Ihre Kaufbereitschaft ist sehr hoch") 
+                            st.write("Ihre Kaufbereitschaft ist sehr hoch")
+app()
