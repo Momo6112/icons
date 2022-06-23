@@ -44,15 +44,12 @@ def app():
     def callback2():
         st.session_state.reg=True
     with col1:
-        liste=[]
-        liste.append("Einloggen")
-        liste.append("Registrieren")
             
     
         with st.form("log1"):
           option = st.selectbox(
           'Wähle eine der folgenden Funktionen',
-          ('Einloggen', 'Registrieren'))
+          (," ",'Einloggen', 'Registrieren'))
   
                 
     
