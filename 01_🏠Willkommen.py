@@ -50,6 +50,7 @@ def app():
           option = st.selectbox(
           'Wähle eine der folgenden Funktionen',
           (" ",'Einloggen', 'Registrieren'))
+          sbest=st.form_submit_button("Bestätigen")
   
                 
     
