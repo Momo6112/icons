@@ -61,7 +61,7 @@ def app():
       if prei==None:
           st.info("Keine Tabelle vorhande") 
       else:
-          for tabelle in tabell2:
+          for tabelle in prei:
               liste.append(tabelle[0])
       #liste.append(tabell2[0])
       print(tabell2)
