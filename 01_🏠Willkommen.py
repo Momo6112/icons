@@ -53,7 +53,7 @@ def app():
           'Wähle eine der folgenden Funktionen',
           (" ",'Einloggen', 'Registrieren'))
           sbest=st.form_submit_button("Auswählen")
-          st info("Um diese App vollständig zu benutzen, müssen Sie sich eingeloggt haben.")
+          st.info("Um diese App vollständig zu benutzen, müssen Sie sich eingeloggt haben.")
           st.warning("Ansonsten werden Sie überall eine Fehlermeldung erhalten.")
   
                 
