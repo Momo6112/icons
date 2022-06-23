@@ -61,6 +61,7 @@ def app():
             
     
     if option=="Einloggen":
+      with col1:
         with st.form("log"):
             loginn=st.text_input("Benutzername: ")
             loginp=st.text_input("Passwort: ")
@@ -92,7 +93,7 @@ def app():
                     
                     
         with st.form(key='form201'):
-         eingabe=st.text_input("Username:")
+         eingabe=st.text_input("BenutzernameR:")
          passw1=st.text_input("Passwort:",type="password")
         
 
