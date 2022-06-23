@@ -32,6 +32,8 @@ def app():
           akzept=st.form_submit_button(label="Fortfahren")
 
         if akzept:
+          if "einlogge" not in st.session_state:
+            st.session_state.einlogge=True
           abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
           if not cursor.fetchone():  # An empty result evaluates to False.
               st.write("Kein Benutzer mit diesem Benutzernamen")
