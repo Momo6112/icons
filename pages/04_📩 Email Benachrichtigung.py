@@ -44,21 +44,24 @@ cursor = conn.cursor()
 def app(): 
     st.subheader("Benachrichtigung anfordern")
     anfragenlistebenutzer=[]
-    user=st.text_input("Benutzer:",st.session_state.name)
+    collll1,collll2=st.columns(2)
+    with collll1:
+      user=st.text_input("Benutzer:",st.session_state.name)
+      richtigentabellen1=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [st.session_state.name])
+      alleanfragen1=cursor.fetchall()
+      if alleanfragen1==None:
+        st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
+      else:
+        for tabell in alleanfragen1:
+            anfragenlistebenutzer.append(tabell[0])
+      boxen1=st.selectbox("Für folgende Anfrage:", anfragenlistebenutzer)
+      
     emailteil1=st.text_input("Emailnamen eingeben")
     emaildomains=["@gmail.com","@gmx.de","@web.de"]
 
     option = st.selectbox('Email Domain auswählen', emaildomains)
     ganzeemail=emailteil1+option
     
-    richtigentabellen1=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [st.session_state.name])
-    alleanfragen1=cursor.fetchall()
-    if alleanfragen1==None:
-      st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
-    else:
-      for tabell in alleanfragen1:
-          anfragenlistebenutzer.append(tabell[0])
-    boxen1=st.selectbox("Für folgende Anfrage:", anfragenlistebenutzer)
 
     port = 587  # For starttls
     smtp_server = "smtp.gmail.com"
