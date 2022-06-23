@@ -78,8 +78,11 @@ def app():
             "\n"
             "DB-Price-App"
             ]
-    liste=[cursor.execute("SELECT preis from %s ",[boxen1])]
-                    
+    liste=[]
+    tabell2=cursor.execute("SELECT preis from %s ",[boxen1])
+    for pr in tabell2:
+            liste.append(tabell2[0])
+                        
     preisangabe = st.slider("Ihr gewünschter Höchstpreis:")
     with st.form(key='form1'):
             submit_buttonpreis = st.form_submit_button(label='Benachrichtige mich')    
