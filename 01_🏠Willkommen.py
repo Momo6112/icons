@@ -33,7 +33,8 @@ def app():
     image=Image.open("website.png")
         
     st.image(image,caption="DB Ticker-App")
-
+    st.info("Um diese App vollständig zu benutzen, müssen Sie sich eingeloggt haben.")
+    st.warning("Ansonsten werden Sie überall eine Fehlermeldung erhalten.")
     st.subheader("Beschreibung")
     #load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_E3exCx.json")
     col1,col2,col3=st.columns(3)
@@ -53,8 +54,7 @@ def app():
           'Wähle eine der folgenden Funktionen',
           (" ",'Einloggen', 'Registrieren'))
           sbest=st.form_submit_button("Auswählen")
-          st.info("Um diese App vollständig zu benutzen, müssen Sie sich eingeloggt haben.")
-          st.warning("Ansonsten werden Sie überall eine Fehlermeldung erhalten.")
+          
   
                 
     
