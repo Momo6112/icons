@@ -26,7 +26,7 @@ def app():
     coll1,coll2=st.columns(2)
     with coll1:
         loginname=st.text_area("Benutzer: ", st.session_state.name)
-        loginpassw=st.text_area("Passwort:",st.session_state.passw,type="password")
+        loginpassw=st.text_area("Passwort:",st.session_state.passw)
         anfragenlistebenutzer=[]
         with st.form("akt"):
           akzept=st.form_submit_button(label="Fortfahren")
