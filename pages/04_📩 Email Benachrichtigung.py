@@ -50,7 +50,7 @@ def app():
     ganzeemail=emailteil1+option
     
     richtigentabellen1=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [st.session_state.name])
-        alleanfragen1=cursor.fetchall()
+    alleanfragen1=cursor.fetchall()
         if alleanfragen1==None:
                 st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
         else:
