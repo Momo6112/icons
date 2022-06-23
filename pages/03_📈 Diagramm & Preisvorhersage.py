@@ -36,7 +36,7 @@ def app():
              abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
              if not cursor.fetchone():  # An empty result evaluates to False.
                   st.write("Kein Benutzer mit diesem Benutzernamen")
-              else:
+             else:
                   abfragep = cursor.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginpassw])
                   if not cursor.fetchone():  # An empty result evaluates to False.
                       st.write("Falsches Passwort")
