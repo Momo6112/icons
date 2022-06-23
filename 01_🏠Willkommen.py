@@ -104,7 +104,6 @@ def app():
         def add_userdata(eingabe,passw1):
                 anf=cur.execute("Select login.username From login where username=%s",[eingabe])
                 if not cur.fetchone():
-                    passw1 = bcrypt.hashpw(passw1.encode("utf-8"), bcrypt.gensalt(5)).decode("utf-8")
                     result=pandas.DataFrame(columns=["username","passwort"])
                     result.loc[len(result)]=[eingabe,passw1]
                     result.to_sql(name="login", con=engine, if_exists="append")
