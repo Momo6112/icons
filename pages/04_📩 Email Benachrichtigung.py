@@ -44,7 +44,7 @@ cursor = conn.cursor()
 def app(): 
     st.subheader("Benachrichtigung anfordern")
     anfragenlistebenutzer=[]
-    collll1,collll2=st.columns(4)
+    collll1,collll2,collll3,collll4=st.columns(4)
     with collll1:
       user=st.text_input("Benutzer:",st.session_state.name)
       richtigentabellen1=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [st.session_state.name])
