@@ -50,14 +50,17 @@ def app():
             
     
         with st.form("log1"):
-          neuebox=st.selectbox("Wähle eine der folgenden Funktionen:",options=list(liste)
+          option = st.selectbox(
+          'Wähle eine der folgenden Funktionen',
+          ('Einloggen', 'Registrieren'))
+  
                 
     
         
    
             
     
-    if neuebox=="Einloggen":
+    if option=="Einloggen":
         with st.form("log"):
             loginn=st.text_input("Benutzername: ")
             loginp=st.text_input("Passwort: ")
@@ -84,7 +87,7 @@ def app():
                         st.session_state.passw=loginp
         if best:
             Login(loginn,loginp)
-    if neuebox=="Registrieren" :
+    if option=="Registrieren":
         conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com",
                             database="dbticket", 
                             user="dbticket_user", 
