@@ -22,7 +22,8 @@ conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.ren
                         password="Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy")
 
 engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy@dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com/dbticket')
-global cursor = conn.cursor()
+global cursor 
+cursor = conn.cursor()
 
 
 def app():
