@@ -28,7 +28,7 @@ def app():
         loginname=st.text_input("Login: ", st.session_state.name)
         loginpassw=st.text_input("Passwort:",st.session_state.passw,type="password")
         anfragenlistebenutzer=[]
-        akzept=st.form_submit_button("Fortfahren")
+        akzept=st.form_submit_button(label="Fortfahren")
 
         if akzept:
           abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
