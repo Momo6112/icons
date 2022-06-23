@@ -271,7 +271,7 @@ def app():
                           
                             else:
                                 
-                                  anfrage_tage= time.strftime("26.06")
+                                  anfrage_tage= time.strftime("%d.%m")
                                   anfrage_zeit=time.strftime("%H:%M")
                                   result=pandas.DataFrame(columns=["anfrage_tag","anfrage_uhrzeit","startbahnhof", "zielbahnhof","fahrzeit","preis"])
                                   result.loc[len(result)]=[anfrage_tage,anfrage_zeit,station1,station2,zeiten_zv1,preis_float]
