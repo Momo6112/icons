@@ -29,12 +29,9 @@ def app():
     with coll2:
         loginpassw=st.text_input("Passwort:",st.session_state.passw)
         anfragenlistebenutzer=[]
-        with st.form("akt"):
-          akzept=st.form_submit_button(label="Fortfahren")
-
-        if akzept:
-          if "einlogge" not in st.session_state:
-            st.session_state.einlogge=True
+        
+    if "einlogge" not in st.session_state:
+          st.session_state.einlogge=True
           abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
           if not cursor.fetchone():  # An empty result evaluates to False.
               st.write("Kein Benutzer mit diesem Benutzernamen")
@@ -183,7 +180,7 @@ def app():
                       preis=float(prediction[0][0])
                       preis2=str(round(preis, 2))+ ' EUR'
                       st.subheader('Der prognostizierte Preis beträgt morgen:  ')
-                      st.subheader(preis2)
+                      st.subheader(preis2) 
     
     
 
