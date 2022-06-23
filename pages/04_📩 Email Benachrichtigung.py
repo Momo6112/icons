@@ -33,6 +33,14 @@ from telnetlib import DO
 from typing import Collection
 import smtplib, ssl
 
+conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com",
+                      database="dbticket", 
+                      user="dbticket_user", 
+                      password="Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy")
+
+engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy@dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com/dbticket')
+cursor = conn.cursor()
+
 def app(): 
     st.subheader("Benachrichtigung anfordern")
     emailteil1=st.text_input("Emailnamen eingeben")
