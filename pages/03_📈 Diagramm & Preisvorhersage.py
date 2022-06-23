@@ -25,8 +25,8 @@ cursor = conn.cursor()
 def app():
     coll1,coll2=st.columns(2)
     with coll1:
-        loginname=st.text_input("Login: ", st.session_state.name)
-        loginpassw=st.text_input("Passwort:",st.session_state.passw,type="password")
+        loginname=st.text_area("Benutzer: ", st.session_state.name)
+        loginpassw=st.text_area("Passwort:",st.session_state.passw,type="password")
         anfragenlistebenutzer=[]
         with st.form("akt"):
           akzept=st.form_submit_button(label="Fortfahren")
