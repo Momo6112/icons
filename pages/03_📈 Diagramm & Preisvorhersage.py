@@ -29,9 +29,8 @@ def app():
     with coll2:
         loginpassw=st.text_input("Passwort:",st.session_state.passw)
         anfragenlistebenutzer=[]
-    with coll3:
-        with st.form("akt"):
-          akzept=st.form_submit_button(label="Fortfahren")
+    with st.form("akt"):
+      akzept=st.form_submit_button(label="Fortfahren")
 
         if akzept:
           if "einlogge" not in st.session_state:
