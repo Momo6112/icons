@@ -29,6 +29,8 @@ def app():
   with coll2:
     loginpassw=st.text_input("Passwort:",st.session_state.passw)
     anfragenlistebenutzer=[]
+  with coll3:  
+    date = st.selectbox("Wähle ein Datum:",date_list)
     
     
     abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
@@ -62,7 +64,7 @@ def app():
 
                 date_list = df_diagramm['anfrage_tag'].unique()
 
-                date = st.selectbox("Wähle ein Datum:",date_list)
+                #date = st.selectbox("Wähle ein Datum:",date_list)
 
 
                 fig = px.line(df_diagramm[df_diagramm['anfrage_tag'] == date], 
