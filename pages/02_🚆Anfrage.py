@@ -8,7 +8,6 @@ import streamlit as st
 import psycopg2
 import psycopg2.extras
 from sqlalchemy import create_engine
-import pandas
 from bs4 import BeautifulSoup
 import requests
 import time 
