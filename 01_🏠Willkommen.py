@@ -48,7 +48,7 @@ def app():
             
     
         with st.form("log1"):
-          neuebox=st.selectbox("Wähle eine der folgenden Funktionen",Pages.keys())
+          neuebox=st.selectbox("Wähle eine der folgenden Funktionen:",options=list(Pages.keys()))
                 
     
         
