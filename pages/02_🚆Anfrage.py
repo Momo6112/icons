@@ -254,19 +254,19 @@ def app():
                       
 
                     if "Verbindung liegt in der Vergangenheit" in sparpreis_zv1: 
-                      print("Diese Verbindung liegt in der Vergangenheit. Wählen Sie eine andere Verbindung")
+                      st.info("Diese Verbindung liegt in der Vergangenheit. Wählen Sie eine andere Verbindung")
                       break
 
                     else: 
                         if "THA" in art_zug_zv2:
                       
-                          print("Diese Zugverbindung wird nicht von uns unterstüzt. Bitte wählen Sie eine Verbindung der Züge von der DB.")
+                          st.info("Diese Zugverbindung wird nicht von uns unterstüzt. Bitte wählen Sie eine Verbindung der Züge von der DB.")
                           break
 
                         else: 
                             if "VRS-Tarif" in sparpreis_zv1:
                             
-                              print ("Hier ist kein Vergleich notwendig, da diese Verbindung zu VRS-Tarifen angeboten wird.")
+                              st.info("Hier ist kein Vergleich notwendig, da diese Verbindung zu VRS-Tarifen angeboten wird.")
                               break 
                           
                             else:
