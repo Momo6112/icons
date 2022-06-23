@@ -29,4 +29,5 @@ def app():
         
     if nein:
         st.info("Nicht abgemeldet")
+app()
         
