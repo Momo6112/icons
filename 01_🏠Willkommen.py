@@ -44,12 +44,10 @@ def app():
     def callback2():
         st.session_state.reg=True
     with col1:
-        with st.form("log2"):
-            einlogg=st.button("Einloggen",on_click=callback1)
+        einlogg=st.button("Einloggen",on_click=callback1)
                 
     with col2:
-        with st.form("log1"):
-            reg=st.button("Registrieren",on_click=callback2)
+        reg=st.button("Registrieren",on_click=callback2)
         
    
             
