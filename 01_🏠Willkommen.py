@@ -66,7 +66,7 @@ def app():
       with col1:
         with st.form("log"):
             loginn=st.text_input("Benutzername: ")
-            loginp=st.text_input("Passwort: ")
+            loginp=st.text_input("Passwort: ",type="password")
             
             best=st.form_submit_button("Bestätigen")
         def Login(loginn,loginp): 
