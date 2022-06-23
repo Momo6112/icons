@@ -57,7 +57,8 @@ def app():
       boxen1=st.selectbox("Für folgende Anfrage:", anfragenlistebenutzer)
       liste=[]
       tabell2=cursor.execute(f"SELECT * From {boxen1} ")
-      if tabell2==None:
+      prei=cursor.fetchall()
+      if prei==None:
           st.info("Keine Tabelle vorhande") 
       else:
           for tabelle in tabell2:
