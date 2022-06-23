@@ -22,6 +22,7 @@ conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.ren
                         password="Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy")
 
 engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy@dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com/dbticket')
+global cursor = conn.cursor()
 
 
 def app():
@@ -64,8 +65,7 @@ def app():
             loginp=st.text_input("Passwort: ")
             
             best=st.form_submit_button("Bestätigen")
-        def Login(loginn,loginp):
-            cursor = conn.cursor() 
+        def Login(loginn,loginp): 
             abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
             if not cursor.fetchone():  # An empty result evaluates to False.
                  st.info("Kein Benutzer mit diesem Benutzernamen")
