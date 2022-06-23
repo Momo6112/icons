@@ -50,7 +50,7 @@ def app():
                           st.session_state.tabe= True
                       for tabell in alleanfragen:
                           anfragenlistebenutzer.append(tabell[0])
-                      boxen=st.selectbox("Tabelle: ", anfragenlistebenutzer)
+                      boxen=st.selectbox("Tabelle: ", " ",anfragenlistebenutzer)
 
                       data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
 
