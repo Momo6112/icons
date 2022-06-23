@@ -51,12 +51,12 @@ def app():
     
     richtigentabellen1=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [st.session_state.name])
     alleanfragen1=cursor.fetchall()
-        if alleanfragen1==None:
-                st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
-        else:
-            for tabell in alleanfragen1:
-                anfragenlistebenutzer.append(tabell[0])
-           boxen1=st.selectbox("Für folgende Anfrage:", anfragenlistebenutzer)
+    if alleanfragen1==None:
+      st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
+    else:
+      for tabell in alleanfragen1:
+          anfragenlistebenutzer.append(tabell[0])
+    boxen1=st.selectbox("Für folgende Anfrage:", anfragenlistebenutzer)
 
     port = 587  # For starttls
     smtp_server = "smtp.gmail.com"
