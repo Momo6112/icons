@@ -27,7 +27,7 @@ def app():
     with coll1:
         loginname=st.text_input("Benutzer: ", st.session_state.name)
          with st.form("akt"):
-      akzept=st.form_submit_button(label="Fortfahren")
+          akzept=st.form_submit_button(label="Fortfahren")
 
         if akzept:
           if "einlogge" not in st.session_state:
