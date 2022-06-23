@@ -119,7 +119,7 @@ def app():
 
 
 
-                      with st.spinner('Bitte warten'):
+                      with st.spinner('Bitte warten, der prognostizierte Preis wird berechnet'):
                               time.sleep(45)
                       st.success('Ergebnis folgt')
                       model = Sequential()
