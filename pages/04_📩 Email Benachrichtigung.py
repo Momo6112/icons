@@ -65,7 +65,7 @@ def app():
 
     port = 587  # For starttls
     smtp_server = "smtp.gmail.com"
-    yag = yagmail.SMTP("dbaaahn@gmail.com","wmgtfktvxmjsipox")
+    yag = yagmail.SMTP("dbpriceapp@gmail.com","jeedmppkysrivewz")
     contents = [
             "Ein neuer Preis ihrer Verbindung ist verfuegbar."
             "\n"
