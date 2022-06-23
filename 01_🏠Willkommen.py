@@ -22,7 +22,7 @@ conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.ren
                         password="Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy")
 
 engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy@dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com/dbticket')
-cursor = conn.cursor() 
+
 
 def app():
     st.set_page_config("DB","house",layout="wide")
@@ -50,7 +50,7 @@ def app():
           option = st.selectbox(
           'Wähle eine der folgenden Funktionen',
           (" ",'Einloggen', 'Registrieren'))
-          sbest=st.form_submit_button("Durchführen")
+          sbest=st.form_submit_button("Auswählen")
   
                 
     
@@ -65,6 +65,7 @@ def app():
             
             best=st.form_submit_button("Bestätigen")
         def Login(loginn,loginp):
+            cursor = conn.cursor() 
             abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
             if not cursor.fetchone():  # An empty result evaluates to False.
                  st.info("Kein Benutzer mit diesem Benutzernamen")
