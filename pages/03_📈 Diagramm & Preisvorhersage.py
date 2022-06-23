@@ -26,10 +26,7 @@ def app():
     coll1,coll2,coll3,coll4=st.columns(4)
     with coll1:
         loginname=st.text_input("Benutzer: ", st.session_state.name)
-    with coll2:
-        loginpassw=st.text_input("Passwort:",st.session_state.passw)
-        anfragenlistebenutzer=[]
-    with st.form("akt"):
+         with st.form("akt"):
       akzept=st.form_submit_button(label="Fortfahren")
 
         if akzept:
@@ -184,4 +181,11 @@ def app():
                       preis2=str(round(preis, 2))+ ' EUR'
                       st.subheader('Der prognostizierte Preis beträgt morgen:  ')
                       st.subheader(preis2)
+    with coll2:
+        loginpassw=st.text_input("Passwort:",st.session_state.passw)
+        anfragenlistebenutzer=[]
+    with st.form("akt"):
+      akzept=st.form_submit_button(label="Fortfahren")
+
+        
 app()
