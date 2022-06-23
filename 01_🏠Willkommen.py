@@ -81,7 +81,7 @@ def app():
                     st.success("Sie haben sich erfolgreich eingeloggt")
                     with col2:
                       with st.form("log3"):
-                        weiter=st.form_submit_button("Fortfahren zur Anfrage")
+                        st.write("[Ich bin bereits registriert! >](https://artuuroos-icons-01-willkommen-9w8j6r.streamlitapp.com/Anfrage)")
                         weiter2=st.form_submit_button("Fortfahren zum Diagramm/Preisvorhersage")
                       
             
