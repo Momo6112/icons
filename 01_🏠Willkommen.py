@@ -44,15 +44,18 @@ def app():
     def callback2():
         st.session_state.reg=True
     with col1:
-        einlogg=st.button("Einloggen",on_click=callback1)
+        Pages ={"Einloggen","Registrieren"}
+            
+    
+    
+        neuebox=st.selectbox("Wähle eine der folgenden Funktionen",Pages.keys())
                 
-    with col2:
-        reg=st.button("Registrieren",on_click=callback2)
+    
         
    
             
     
-    if einlogg:
+    if neuebox=="Einloggen":
         with st.form("log"):
             loginn=st.text_input("Benutzername: ")
             loginp=st.text_input("Passwort: ")
@@ -79,7 +82,7 @@ def app():
                         st.session_state.passw=loginp
         if best:
             Login(loginn,loginp)
-    if reg :
+    if neuebox=="Registrieren" :
         conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com",
                             database="dbticket", 
                             user="dbticket_user", 
