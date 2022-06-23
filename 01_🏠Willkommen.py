@@ -23,7 +23,7 @@ conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.ren
 
 engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy@dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com/dbticket')
 global cursor 
-cursor = conn.cursor()
+cur = conn.cursor()
 
 
 def app():
@@ -67,12 +67,12 @@ def app():
             
             best=st.form_submit_button("Bestätigen")
         def Login(loginn,loginp): 
-            abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
-            if not cursor.fetchone():  # An empty result evaluates to False.
+            abfrage = cur.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
+            if not cur.fetchone():  # An empty result evaluates to False.
                  st.info("Kein Benutzer mit diesem Benutzernamen")
             else:
-                abfragep = cursor.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginp])
-                if not cursor.fetchone():  # An empty result evaluates to False.
+                abfragep = cur.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginp])
+                if not cur.fetchone():  # An empty result evaluates to False.
                     st.warning("Falsches Passwort")
                 else:
                     st.success("Sie haben sich erfolgreich eingeloggt")
@@ -89,25 +89,13 @@ def app():
         if best:
             Login(loginn,loginp)
     if option=="Registrieren":
-        conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com",
-                            database="dbticket", 
-                            user="dbticket_user", 
-                            password="Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy")
-
-        engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy@dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com/dbticket')
-        cursor = conn.cursor()
-        with st.form(key='form201'):
-            eingabe=st.text_input("Username:")
-            passw1=st.text_input("Passwort:",type="password")
-            
-
-            register = st.form_submit_button(label="Registrieren",on_click=callback2)
-            
+                    
+                    
 
         
         def add_userdata(eingabe,passw1):
-                anf=cursor.execute("Select login.username From login where username=%s",[eingabe])
-                if not cursor.fetchone():
+                anf=cur.execute("Select login.username From login where username=%s",[eingabe])
+                if not cur.fetchone():
                     passw1 = bcrypt.hashpw(passw1.encode("utf-8"), bcrypt.gensalt(5)).decode("utf-8")
                     result=pandas.DataFrame(columns=["username","passwort"])
                     result.loc[len(result)]=[eingabe,passw1]
