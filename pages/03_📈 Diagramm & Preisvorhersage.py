@@ -29,7 +29,9 @@ def app():
     with coll2:
         loginpassw=st.text_input("Passwort:",st.session_state.passw)
         anfragenlistebenutzer=[]
-         
+    with st.form("loge"):
+        fort=st.form_submit_button("Bestätigen")   
+      
     if fort:
              abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
              if not cursor.fetchone():  # An empty result evaluates to False.
