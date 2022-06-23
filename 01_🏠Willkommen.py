@@ -49,7 +49,7 @@ def app():
         with st.form("log1"):
           option = st.selectbox(
           'Wähle eine der folgenden Funktionen',
-          (," ",'Einloggen', 'Registrieren'))
+          (" ",'Einloggen', 'Registrieren'))
   
                 
     
