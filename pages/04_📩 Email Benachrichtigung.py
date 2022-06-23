@@ -55,6 +55,15 @@ def app():
         for tabell in alleanfragen1:
             anfragenlistebenutzer.append(tabell[0])
       boxen1=st.selectbox("Für folgende Anfrage:", anfragenlistebenutzer)
+      liste=[]
+      tabell2=cursor.execute(f"SELECT * From {boxen1} ")
+      if tabell2==None:
+          st.info("Keine Tabelle vorhande") 
+      else:
+          for tabelle in tabell2:
+              liste.append(tabelle[0])
+      #liste.append(tabell2[0])
+      print(tabell2)
       
     emailteil1=st.text_input("Emailnamen eingeben")
     emaildomains=["@gmail.com","@gmx.de","@web.de"]
@@ -78,15 +87,6 @@ def app():
             "\n"
             "DB-Price-App"
             ]
-    liste=[]
-    tabell2=cursor.execute(f"SELECT * From {boxen1} ")
-    if tabell2==None:
-        st.info("Keine Tabelle vorhande") 
-    else:
-        for tabelle in tabell2:
-            liste.append(tabelle[0])
-    #liste.append(tabell2[0])
-    print(tabell2)
                         
     preisangabe = st.slider("Ihr gewünschter Höchstpreis:")
     with st.form(key='form1'):
