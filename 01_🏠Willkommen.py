@@ -91,7 +91,7 @@ def app():
     if option=="Registrieren":
                     
                     
-       with st.form(key='form201'):
+        with st.form(key='form201'):
          eingabe=st.text_input("Username:")
          passw1=st.text_input("Passwort:",type="password")
         
