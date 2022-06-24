@@ -98,7 +98,7 @@ def app():
                     
                    
                     zeilenanzahl = df.shape[0]                  
-                    if zeilenanzahl > 5: 
+                    if zeilenanzahl > 4: 
 
                       train_size = int(len(df) * 0.8)
                       df_train, df_test = df[:train_size], df[train_size:len(df)]
