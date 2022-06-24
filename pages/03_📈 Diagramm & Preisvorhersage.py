@@ -24,7 +24,7 @@ cursor = conn.cursor()
 
 def app():
   coll1,coll2,coll3,coll4=st.columns(4)
-   
+     
 
   with coll1:
         loginname=st.text_input("Login: ")
@@ -54,7 +54,7 @@ def app():
                   listes.append(liste)                   
                 boxen=st.selectbox("Tabelle: ", listes)
                 
-                with coll1:
+                with coll2:
 
                   data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
 
@@ -90,7 +90,7 @@ def app():
                   st.table(df)
                   
                   zeilenanzahl = df.shape[0]                  
-                  if zeilenanzahl > 10: 
+                  if zeilenanzahl > 5: 
                     
                     train_size = int(len(df) * 0.8)
                     df_train, df_test = df[:train_size], df[train_size:len(df)]
