@@ -29,68 +29,58 @@ def app():
   with coll2:
     loginpassw=st.text_input("Passwort:",st.session_state.passw)
     anfragenlistebenutzer=[]
+    abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
+    if not cursor.fetchone():  # An empty result evaluates to False.
+        st.write("Kein Benutzer mit diesem Benutzernamen")
+    else:
+        abfragep = cursor.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginpassw])
+        if not cursor.fetchone():  # An empty result evaluates to False.
+            st.write("Falsches Passwort")
+        else:
+            st.write("Sie haben sich erfolgreich eingeloggt")
 
-    
-    
-  abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
-  if not cursor.fetchone():  # An empty result evaluates to False.
-      st.write("Kein Benutzer mit diesem Benutzernamen")
-  else:
-      abfragep = cursor.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginpassw])
-      if not cursor.fetchone():  # An empty result evaluates to False.
-          st.write("Falsches Passwort")
-      else:
-          st.write("Sie haben sich erfolgreich eingeloggt")
+            richtigentabellen=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [loginname])
+            alleanfragen=cursor.fetchall()
+            if alleanfragen==None:
+                st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
+            else:
+                if "tabe" not in st.session_state :
+                    st.session_state.tabe= True
+                    for tabell in alleanfragen:
+                    anfragenlistebenutzer.append(tabell[0])   
+                    boxen=st.selectbox("Tabelle:", anfragenlistebenutzer)
+                if "auswa" not in st.session_state :
+                   st.session_state.auswa= True
 
-          richtigentabellen=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [loginname])
-          alleanfragen=cursor.fetchall()
-          if alleanfragen==None:
-              st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
-          else:
-              if "tabe" not in st.session_state :
-                  st.session_state.tabe= True
-              for tabell in alleanfragen:
-                  anfragenlistebenutzer.append(tabell[0])   
-              boxen=st.selectbox("Tabelle:", anfragenlistebenutzer)
-              if "auswa" not in st.session_state :
-                st.session_state.auswa= True
+                data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
 
-               data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
-
-               df_diagramm= pd.DataFrame(data_tabelle)
-
-
-               date_list = df_diagramm['anfrage_tag'].unique()
+                df_diagramm= pd.DataFrame(data_tabelle)
+                date_list = df_diagramm['anfrage_tag'].unique()
+                date = st.selectbox("Wähle ein Datum:",date_list)
 
 
+                fig = px.line(df_diagramm[df_diagramm['anfrage_tag'] == date], 
+                x = "anfrage_uhrzeit", y = "preis", title = date)
+                st.plotly_chart(fig)
 
-               date = st.selectbox("Wähle ein Datum:",date_list)
+                cursor.execute(f"SELECT DISTINCT anfrage_tag FROM {boxen}")
 
-
-               fig = px.line(df_diagramm[df_diagramm['anfrage_tag'] == date], 
-               x = "anfrage_uhrzeit", y = "preis", title = date)
-               st.plotly_chart(fig)
-
-
-
-               cursor.execute(f"SELECT DISTINCT anfrage_tag FROM {boxen}")
-
-               inhalt = cursor.fetchall()
-               mins=[]
-               maxs=[]
-               dates=[]
+                inhalt = cursor.fetchall()
+                mins=[]
+                maxs=[]
+                dates=[]
 
 
 
-               for d in inhalt:
-                date=str(d[0])
-                cursor.execute(f"SELECT MIN(preis), MAX(preis) FROM {boxen} WHERE anfrage_tag = '{date}' ") 
-                res=cursor.fetchone()
-                mini=res[0]
-                maxi=res[1]
-                mins.append(mini)
-                maxs.append(maxi)
-                dates.append(date)
+                for d in inhalt:
+                 date=str(d[0])
+                 cursor.execute(f"SELECT MIN(preis), MAX(preis) FROM {boxen} WHERE anfrage_tag = '{date}' ") 
+                 res=cursor.fetchone()
+                 mini=res[0]
+                 maxi=res[1]
+                 mins.append(mini)
+                 maxs.append(maxi)
+                 dates.append(date)
 
                 df=pd.DataFrame({'Datum':dates, 'Maximum': maxs, 'Minimum':mins})
                 st.table(df)
@@ -181,12 +171,4 @@ def app():
                 st.subheader('Der prognostizierte Preis beträgt morgen:  ')
                 st.subheader(preis2)
 
-                  
-        
-            
-           
-    
-    
-
-        
 app()
