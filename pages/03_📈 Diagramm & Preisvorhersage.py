@@ -40,7 +40,7 @@ def app():
         if not cursor.fetchone():  # An empty result evaluates to False.
             st.write("Falsches Passwort")
         else:
-            st.info("Sie haben sich erfolgreich eingeloggt")
+            st.write("Sie haben sich erfolgreich eingeloggt")
 
             richtigentabellen=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [loginname])
             alleanfragen=cursor.fetchall()
