@@ -31,7 +31,7 @@ def app():
   with coll2:
     loginpassw=st.text_input("Passwort:",type="password")
     anfragenlistebenutzer=[]
-  with coll1:
+  with coll3:
     abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
     if not cursor.fetchone():  # An empty result evaluates to False.
         st.write("Kein Benutzer mit diesem Benutzernamen")
@@ -54,7 +54,7 @@ def app():
                   listes.append(liste)                   
                 boxen=st.selectbox("Tabelle: ", listes)
                 
-                with coll2:
+                with coll1:
 
                   data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
 
