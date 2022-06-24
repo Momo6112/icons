@@ -240,19 +240,22 @@ def app():
                   st.write("Reiseziel: ",station2)
                   st.write("Fahrzeit: ",zeiten_zv1)
                   st.write("Preis: ",sparpreis_zv)
-                  coll1,coll2,coll3=st.columns(3)
-                  with coll1:
-                    st.info("Zum Speichern unten registrieren/einloggen")
+                  
+                  with st.container():
+                    st.info("Wenn Sie Ihre Anfrage speichern möchten, müssen Sie Sich bitte einloggen bzw. registrieren.")
                     with st.form("log1"):
                       option = st.selectbox(
                       'Wähle eine der folgenden Funktionen',
                       (" ",'Einloggen', 'Registrieren'))
                       sbest=st.form_submit_button("Auswählen")
                   if option=="Einloggen":
-                    with st.container():
+                    coll1,coll2,coll3=st.columns(3)
+                    with coll1:
                       with st.form("log"):
                           loginn=st.text_input("Benutzername: ")
+                    with coll2:
                           loginp=st.text_input("Passwort: ",type="password")
+                    with coll3:
                           wunsch=st.text_input("Geben Sie Ihrer Anfrage einen Namen :")
                           tabe=''.join(wunsch)
 
