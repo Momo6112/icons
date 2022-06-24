@@ -249,19 +249,20 @@ def app():
                       ("bitte auswählen",'Anmelden', 'Registrieren'))
                       sbest=st.form_submit_button("Auswählen")
                   if option=="Anmelden":
-                    coll1,coll2=st.columns(2)
-                    with coll1:
+                    
+                    with st.container:
                       with st.form("log"):
                          loginn=st.text_input("Benutzername: ")
                          
   
                          loginp=st.text_input("Passwort: ",type="password")
-                         best=st.form_submit_button("Anfrage speichern")
+                         
         
                     #best= st.checkbox(label='Anfrage speichern')
-                    with coll2:
+                
                           wunsch=st.text_input("Gib deiner Anfrage einen Namen:")
                           tabe=''.join(wunsch)
+                          best=st.form_submit_button("Anfrage speichern")
                           def Login(loginn,loginp): 
                                 abfrage = cur.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
                                 if not cur.fetchone():  # An empty result evaluates to False.
