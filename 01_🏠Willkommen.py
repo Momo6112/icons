@@ -243,6 +243,7 @@ def app():
                   st.write("Preis: ",sparpreis_zv)
                   coll1,coll2,coll3=st.columns(3)
                   with coll2:
+                    with st.form("log3"):
                     asp=st.form_submit_button("Anfrage speichern")
                     if asp:
                       with st.form("log1"):
