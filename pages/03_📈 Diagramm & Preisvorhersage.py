@@ -23,7 +23,7 @@ engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0f
 cursor = conn.cursor()
 
 def app():
-  coll1,coll2,coll3,coll4=st.columns(4)
+  coll1,coll2,coll3=st.columns(3)
      
 
   with coll1:
