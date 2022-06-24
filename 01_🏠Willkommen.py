@@ -269,10 +269,11 @@ def app():
                                   st.success("Sie haben sich erfolgreich eingeloggt")
                                   with coll3:
                                     if 'will' not in st.session_state:
-                                      st.session_state.will= True
+                                      st.session_state.will= False
                                     wunsch=st.text_input("Anfrage speichern in :")
                                     tabe=''.join(wunsch)
-                                    anlegen = st.button(label='Tabelle anlegen')
+                                    with st.form("log4"):
+                                      anlegen = st.form_submit_button(label='Tabelle anlegen')
 
                                     def mehrereanfragen(user,wunsch):
                                                   tababfrage=cursor.execute("Select anfragen.tabelle From anfragen where username=%s and tabelle=%s",[user,wunsch])
