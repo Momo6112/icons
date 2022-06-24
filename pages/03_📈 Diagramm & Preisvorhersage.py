@@ -217,6 +217,7 @@ def app():
                       preis2=str(round(preis, 2))+ ' EUR'
                       st.subheader('Der prognostizierte Preis beträgt morgen:  ')
                       st.subheader(preis2)
+                      st.write('Bitte beachte, dass es sich bei dem prognostizierten Preis nur um eine Vorhersage handelt. Diese wurde mithilfe von Data-Mining Methoden generiert. Es bedeutet nicht, dass dieser Preis wirklich eintritt. ')
                     else:
                       st.subheader("Es liegen zu wenige Daten vor um eine Preisvorhersage zu generieren!")
 
