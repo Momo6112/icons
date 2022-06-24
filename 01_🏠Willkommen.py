@@ -251,13 +251,14 @@ def app():
                   if option=="Anmelden":
                     coll1,coll2,coll3=st.columns(3)
                     with coll1:
-                      #with st.form("log"):
+                      with st.form("log"):
                          loginn=st.text_input("Benutzername: ",st.session_state.name)
+                          best=st.form_submit_button("Anfrage speichern")
             
                     with coll2:
                           loginp=st.text_input("Passwort: ",type="password")
-                          #best=st.form_submit_button("Anfrage speichern")
-                    best= st.checkbox(label='Anfrage speichern')
+        
+                    #best= st.checkbox(label='Anfrage speichern')
                     with coll3:
                           wunsch=st.text_input("Gib deiner Anfrage einen Namen:")
                           tabe=''.join(wunsch)
