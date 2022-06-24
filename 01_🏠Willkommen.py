@@ -13,10 +13,11 @@ import requests
 import streamlit as st
 from streamlit_lottie import st_lottie
 from streamlit_lottie import st_lottie_spinner
+from bs4 import BeautifulSoup
 import time
 import bcrypt
 import pandas as pd
-from bs4 import beautifulSoup
+
 
 #conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com",
                         #database="dbticket", 
