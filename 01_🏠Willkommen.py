@@ -221,12 +221,12 @@ def app():
       sparpreis_zv=sparpreis_zv3.replace("ab","€")
 
       if "Verbindung liegt in der Vergangenheit" in sparpreis_zv1: 
-          st.info("Diese Verbindung liegt in der Vergangenheit. Bitte wählen Sie eine andere Verbindung.")
+          st.info("Diese Verbindung liegt in der Vergangenheit. Bitte wählen eine andere Verbindung.")
 
       else: 
           if "THA" in art_zug_zv2:
 
-              st.write("Diese Zugverbindung wird nicht von uns unterstüzt. Bitte wählen Sie eine Zugverbindung von der DB.")
+              st.write("Diese Zugverbindung wird nicht von uns unterstüzt. Bitte wähle eine Zugverbindung von der DB.")
 
 
           else: 
@@ -242,13 +242,13 @@ def app():
                   st.write("Preis: ",sparpreis_zv)
                   
                   with st.container():
-                    st.info("Wenn Sie Ihre Anfrage speichern möchten, müssen Sie Sich bitte einloggen bzw. registrieren.")
+                    st.info("Wenn Du Deine Anfrage speichern möchten, müsst Du Dich bitte zuerst anmelden bzw. registrieren.")
                     with st.form("log1"):
                       option = st.selectbox(
-                      'Wähle eine der folgenden Funktionen',
-                      (" ",'Einloggen', 'Registrieren'))
+                      'Wähle eine der folgenden Optionen',
+                      ("bitte auswählen",'Anmelden', 'Registrieren'))
                       sbest=st.form_submit_button("Auswählen")
-                  if option=="Einloggen":
+                  if option=="Anmelden":
                     coll1,coll2,coll3=st.columns(3)
                     with coll1:
                       with st.form("log"):
@@ -256,10 +256,10 @@ def app():
                     with coll2:
                           loginp=st.text_input("Passwort: ",type="password")
                     with coll3:
-                          wunsch=st.text_input("Geben Sie Ihrer Anfrage einen Namen :")
+                          wunsch=st.text_input("Gib deiner Anfrage einen Namen:")
                           tabe=''.join(wunsch)
 
-                          best=st.form_submit_button("Prüfen und Tabelle anlegen")
+                          best=st.form_submit_button("Anfrage speichern")
                           def Login(loginn,loginp): 
                                 abfrage = cur.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
                                 if not cur.fetchone():  # An empty result evaluates to False.
@@ -328,13 +328,13 @@ def app():
 
 
                                                   if "Verbindung liegt in der Vergangenheit" in sparpreis_zv1: 
-                                                    st.info("Diese Verbindung liegt in der Vergangenheit. Wählen Sie eine andere Verbindung")
+                                                    st.info("Diese Verbindung liegt in der Vergangenheit. Wähle eine andere Verbindung")
                                                     break
 
                                                   else: 
                                                       if "THA" in art_zug_zv2:
 
-                                                        st.info("Diese Zugverbindung wird nicht von uns unterstüzt. Bitte wählen Sie eine Verbindung der Züge von der DB.")
+                                                        st.info("Diese Zugverbindung wird nicht von uns unterstüzt. Bitte wählen eine Zugverbindung von der DB.")
                                                         break
 
                                                       else: 
