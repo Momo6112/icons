@@ -46,13 +46,12 @@ def app():
             if alleanfragen==None:
                 st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
             else:
-                if "tabe" not in st.session_state :
-                    st.session_state.tabe= True
-                    for tabell in alleanfragen:
-                      anfragenlistebenutzer.append(tabell[0])   
-                      boxen=st.selectbox("Tabelle:", anfragenlistebenutzer)
-                if "auswa" not in st.session_state :
-                   st.session_state.auswa= True
+                st.table(alleanfragen)
+                  listes=[]
+                  for b in alleanfragen:
+                    liste=b[0]
+                    listes.append(liste)                 
+                boxen=st.selectbox("Tabelle: ", listes)
 
                 data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
 
