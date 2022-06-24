@@ -54,7 +54,7 @@ def app():
                   listes.append(liste)                   
                 boxen=st.selectbox("Tabelle: ", listes)
                 
-                st.write("check out this [link](https://share.streamlit.io/mesmith027/streamlit_webapps/main/MC_pi/streamlit_app.py)"
+                
                 
                 with coll1:
 
