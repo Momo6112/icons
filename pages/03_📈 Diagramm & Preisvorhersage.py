@@ -69,7 +69,7 @@ def app():
                   x = "anfrage_uhrzeit", y = "preis", title = date)
                   st.plotly_chart(fig)
                   
-                  with coll2:
+                  with coll1:
 
                     cursor.execute(f"SELECT DISTINCT anfrage_tag FROM {boxen}")
 
