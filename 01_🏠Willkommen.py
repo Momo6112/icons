@@ -260,17 +260,17 @@ def app():
                           tabe=''.join(wunsch)
 
                           best=st.form_submit_button("Prüfen und Tabelle anlegen")
-                      def Login(loginn,loginp): 
-                          abfrage = cur.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
-                          if not cur.fetchone():  # An empty result evaluates to False.
-                               st.info("Kein Benutzer mit diesem Benutzernamen")
-                          else:
-                              abfragep = cur.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginp])
-                              if not cur.fetchone():  # An empty result evaluates to False.
-                                  st.warning("Falsches Passwort")
-                              else:
-                                  st.success("Sie haben sich erfolgreich eingeloggt")
-                                  def mehrereanfragen(user,wunsch):
+                          def Login(loginn,loginp): 
+                                abfrage = cur.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
+                                if not cur.fetchone():  # An empty result evaluates to False.
+                                 st.info("Kein Benutzer mit diesem Benutzernamen")
+                                else:
+                                    abfragep = cur.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginp])
+                                    if not cur.fetchone():  # An empty result evaluates to False.
+                                        st.warning("Falsches Passwort")
+                                    else:
+                                       st.success("Sie haben sich erfolgreich eingeloggt")
+                                       def mehrereanfragen(user,wunsch):
                                               tababfrage=cursor.execute("Select anfragen.tabelle From anfragen where username=%s and tabelle=%s",[user,wunsch])
                                               if not cursor.fetchone():
                                                 result=pandas.DataFrame(columns=["username","tabelle"])   
@@ -363,11 +363,11 @@ def app():
                                             #weiter2=st.form_submit_button("Fortfahren zum Diagramm/Preisvorhersage")
 
 
-                                  if 'name' not in st.session_state:
-                                      st.session_state.name =loginn
-                                  if 'passw' not in st.session_state:
-                                      st.session_state.passw=loginp
-                                  mehrereanfragen(benut,tabe)
+                                    if 'name' not in st.session_state:
+                                        st.session_state.name =loginn
+                                    if 'passw' not in st.session_state:
+                                        st.session_state.passw=loginp
+                                    mehrereanfragen(benut,tabe)
                                                                      
                                     
 
@@ -497,3 +497,4 @@ def app():
         #if register:   
             #add_userdata(eingabe,passw1)
 app()
+
