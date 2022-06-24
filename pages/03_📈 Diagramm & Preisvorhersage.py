@@ -80,7 +80,7 @@ def app():
                      dates.append(date)
                 df=pd.DataFrame({'Datum':dates, 'Maximum': maxs, 'Minimum':mins})
                     
-                st.write("In der folgenden Tabelle ist der Maximalpreis sowie der Minimalpreis für deine abgefragte Verbindung aufgetragen. Diese ermöglichen eine Einschätzung, in welchem Preisrahmen sich deine Verbindung vermutlich bewegen wird. ")
+                st.write("In der folgenden Tabelle ist der Maximalpreis, sowie der Minimalpreis für deine abgefragte Verbindung eingetragen. Diese ermöglichen eine Einschätzung, in welchem Preisrahmen sich deine Verbindung vermutlich bewegen wird. ")
                 st.table(df)
                   
                     
@@ -142,5 +142,5 @@ def app():
                 else:
                     st.subheader("Es liegen zu wenige Daten vor um eine Preisvorhersage zu generieren!")
                 st.subheader("Du möchtest jetzt eine Verbindung buchen?")
-                st.write("Dann hier lang: [Hier geht es direkt zur Bahn-Webseite](https://www.bahn.de/)")
+                st.write("[Hier geht es direkt zur Bahn-Webseite](https://www.bahn.de/)")
 app()
