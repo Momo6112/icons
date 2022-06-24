@@ -56,7 +56,7 @@ def app():
                 
                 
                 
-                with coll11:
+                with coll1:
 
                   data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
 
