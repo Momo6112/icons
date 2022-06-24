@@ -249,17 +249,17 @@ def app():
                       ("bitte auswählen",'Anmelden', 'Registrieren'))
                       sbest=st.form_submit_button("Auswählen")
                   if option=="Anmelden":
-                    coll1,coll2,coll3=st.columns(3)
+                    coll1,coll2=st.columns(2)
                     with coll1:
                       with st.form("log"):
                          loginn=st.text_input("Benutzername: ")
-                      best=st.form_submit_button("Anfrage speichern")
-            
-                    with coll2:
-                          loginp=st.text_input("Passwort: ",type="password")
+                         
+  
+                         loginp=st.text_input("Passwort: ",type="password")
+                         best=st.form_submit_button("Anfrage speichern")
         
                     #best= st.checkbox(label='Anfrage speichern')
-                    with coll3:
+                    with coll2:
                           wunsch=st.text_input("Gib deiner Anfrage einen Namen:")
                           tabe=''.join(wunsch)
                           def Login(loginn,loginp): 
