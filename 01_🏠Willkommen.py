@@ -274,8 +274,7 @@ def app():
                                     tabe=''.join(wunsch)
 
 
-                                    with st.form(key='form'):
-                                      submit_buttonhome = st.form_submit_button(label='Bestätigen')
+                                    anlegen = st.checkbox(label='Tabelle anlegen')
 
                                     def mehrereanfragen(user,wunsch):
                                                   tababfrage=cursor.execute("Select anfragen.tabelle From anfragen where username=%s and tabelle=%s",[user,wunsch])
@@ -366,7 +365,7 @@ def app():
                                                       st.success("Sie haben die Anfrage erfolgreich gestellt")
                                                     else:
                                                        st.warning("Sie haben bereits eine solche Tabelle angelegt")
-                                    if submit_buttonhome:
+                                    if anlegen:
                                       mehrereanfragen(benut,tabe)
                                                 #weiter2=st.form_submit_button("Fortfahren zum Diagramm/Preisvorhersage")
 
