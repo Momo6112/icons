@@ -243,67 +243,67 @@ def app():
                   st.write("Preis: ",sparpreis_zv)
                   coll1,coll2,coll3=st.columns(3)
                   with coll2:
-                    st.info("Möchten Sie diese Anfrage speichern")
-                      with st.form("log1"):
-                        option = st.selectbox(
-                        'Wähle eine der folgenden Funktionen',
-                        (" ",'Einloggen', 'Registrieren'))
-                        sbest=st.form_submit_button("Auswählen")
-                    if option=="Einloggen":
-                      with col1:
-                        with st.form("log"):
-                            loginn=st.text_input("Benutzername: ")
-                            loginp=st.text_input("Passwort: ",type="password")
+                    st.info("Zum Speichern unten registrieren/einloggen")
+                    with st.form("log1"):
+                      option = st.selectbox(
+                      'Wähle eine der folgenden Funktionen',
+                      (" ",'Einloggen', 'Registrieren'))
+                      sbest=st.form_submit_button("Auswählen")
+                  if option=="Einloggen":
+                    with col1:
+                      with st.form("log"):
+                          loginn=st.text_input("Benutzername: ")
+                          loginp=st.text_input("Passwort: ",type="password")
 
-                            best=st.form_submit_button("Bestätigen")
-                        def Login(loginn,loginp): 
-                            abfrage = cur.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
-                            if not cur.fetchone():  # An empty result evaluates to False.
-                                 st.info("Kein Benutzer mit diesem Benutzernamen")
-                            else:
-                                abfragep = cur.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginp])
-                                if not cur.fetchone():  # An empty result evaluates to False.
-                                    st.warning("Falsches Passwort")
-                                else:
-                                    st.success("Sie haben sich erfolgreich eingeloggt")
-                                    with col2:
-                                      with st.form("log3"):
-                                        st.write("[Ich bin bereits registriert! >](https://artuuroos-icons-01-willkommen-9w8j6r.streamlitapp.com/Anfrage)")
-                                        weiter2=st.form_submit_button("Fortfahren zum Diagramm/Preisvorhersage")
-
-
-                                    if 'name' not in st.session_state:
-                                        st.session_state.name =loginn
-                                    if 'passw' not in st.session_state:
-                                        st.session_state.passw=loginp
-                        if best:
-                            Login(loginn,loginp)
-                    if option=="Registrieren":
+                          best=st.form_submit_button("Bestätigen")
+                      def Login(loginn,loginp): 
+                          abfrage = cur.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
+                          if not cur.fetchone():  # An empty result evaluates to False.
+                               st.info("Kein Benutzer mit diesem Benutzernamen")
+                          else:
+                              abfragep = cur.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginp])
+                              if not cur.fetchone():  # An empty result evaluates to False.
+                                  st.warning("Falsches Passwort")
+                              else:
+                                  st.success("Sie haben sich erfolgreich eingeloggt")
+                                  with col2:
+                                    with st.form("log3"):
+                                      st.write("[Ich bin bereits registriert! >](https://artuuroos-icons-01-willkommen-9w8j6r.streamlitapp.com/Anfrage)")
+                                      weiter2=st.form_submit_button("Fortfahren zum Diagramm/Preisvorhersage")
 
 
-                        with st.form(key='form201'):
-                         eingabe=st.text_input("Benutzername:")
-                         passw1=st.text_input("Passwort:",type="password")
+                                  if 'name' not in st.session_state:
+                                      st.session_state.name =loginn
+                                  if 'passw' not in st.session_state:
+                                      st.session_state.passw=loginp
+                      if best:
+                          Login(loginn,loginp)
+                  if option=="Registrieren":
 
 
-                         register = st.form_submit_button(label="Registrieren")
-
-                        def add_userdata(eingabe,passw1):
-                                anf=cur.execute("Select login.username From login where username=%s",[eingabe])
-                                if not cur.fetchone():
-                                    result=pandas.DataFrame(columns=["username","passwort"])
-                                    result.loc[len(result)]=[eingabe,passw1]
-                                    result.to_sql(name="login", con=engine, if_exists="append")
-                                    result=result[0:0]
-                                    st.info("Erfolgreich registriert")
-                                    st.success("Sie können nun zum Login")
-
-                                else:
-                                    st.warning("Der Benutzername existiert bereits")
+                      with st.form(key='form201'):
+                       eingabe=st.text_input("Benutzername:")
+                       passw1=st.text_input("Passwort:",type="password")
 
 
-                        if register:   
-                            add_userdata(eingabe,passw1)
+                       register = st.form_submit_button(label="Registrieren")
+
+                      def add_userdata(eingabe,passw1):
+                              anf=cur.execute("Select login.username From login where username=%s",[eingabe])
+                              if not cur.fetchone():
+                                  result=pandas.DataFrame(columns=["username","passwort"])
+                                  result.loc[len(result)]=[eingabe,passw1]
+                                  result.to_sql(name="login", con=engine, if_exists="append")
+                                  result=result[0:0]
+                                  st.info("Erfolgreich registriert")
+                                  st.success("Sie können nun zum Login")
+
+                              else:
+                                  st.warning("Der Benutzername existiert bereits")
+
+
+                      if register:   
+                          add_userdata(eingabe,passw1)
                     
 
        
