@@ -92,7 +92,7 @@ def app():
                     
                     st.write("In der folgenden Tabelle ist der Maximalpreis sowie der Minimalpreis für die Abgefragte Verbindung aufgetragen. Diese ermöglichen eine Einschätzung, in welchem Preisrahmen sich deine Verbindung vermutlich bewegen wird. ")
                     st.table(df)
-                  with coll1:
+                  
                     
                    
                     zeilenanzahl = df.shape[0]                  
