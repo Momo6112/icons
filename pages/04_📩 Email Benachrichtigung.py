@@ -49,7 +49,7 @@ def app():
       user="ich"
       st.write("Benutzername:",user)
       #st.text_input("Benutzer:",st.session_state.name)
-      richtigentabellen1=cursor.execute("Select anfragen.tabelle from anfragen where username==ich")
+      richtigentabellen1=cursor.execute('Select anfragen.tabelle from anfragen where username="ich"')
                                         #=%s", [st.session_state.name])
       alleanfragen1=cursor.fetchall()
       if alleanfragen1==None:
