@@ -54,7 +54,11 @@ def app():
                       listes.append(liste)                   
                     boxen=st.selectbox("Tabelle: ", listes)
 
+                    data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
 
+                    df_diagramm= pd.DataFrame(data_tabelle)
+
+                    date_list = df_diagramm['anfrage_tag'].unique()
 
                     date = st.selectbox("Wähle ein Datum:",date_list)
 
