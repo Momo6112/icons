@@ -54,7 +54,7 @@ def app():
                   listes.append(liste)                   
                 boxen=st.selectbox("Tabelle: ", listes)
                 
-                with coll2:
+                with coll1:
 
                   data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
 
