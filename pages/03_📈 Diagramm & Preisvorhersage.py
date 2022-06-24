@@ -47,9 +47,9 @@ def app():
                 st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
             else:
                 listes=[]
-                 for b in alleanfragen:
-                    liste=b[0]
-                    listes.append(liste)                 
+                for b in alleanfragen:
+                  liste=b[0]
+                  listes.append(liste)                 
                 boxen=st.selectbox("Tabelle: ", listes)
 
                 data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
