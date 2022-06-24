@@ -241,6 +241,7 @@ def app():
                   st.write("Reiseziel: ",station2)
                   st.write("Fahrzeit: ",zeiten_zv1)
                   st.write("Preis: ",sparpreis_zv)
+                  st.write("Wollen sie die Anfrage Speichern?")  
 
        
 
