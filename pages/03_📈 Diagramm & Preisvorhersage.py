@@ -93,7 +93,8 @@ def app():
 
                     st.table(df)
                   with coll1:
-
+                    
+                    st.write("In der folgenden Tabelle ist der Maximalpreis sowie der Minimalpreis für die Abgefragte Verbindung aufgetragen. Diese ermöglichen eine Einschätzung, in welchem Preisrahmen sich deine Verbindung vermutlich bewegen wird. ")
                     zeilenanzahl = df.shape[0]                  
                     if zeilenanzahl > 5: 
 
