@@ -252,7 +252,7 @@ def app():
                     coll1,coll2,coll3=st.columns(3)
                     with coll1:
                       with st.form("log"):
-                         loginn=st.text_input("Benutzername: ",st.session_state.name)
+                         loginn=st.text_input("Benutzername: ")
                       best=st.form_submit_button("Anfrage speichern")
             
                     with coll2:
