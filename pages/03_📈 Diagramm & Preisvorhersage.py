@@ -86,47 +86,47 @@ def app():
                 st.write("\n")
                 st.write("\n")
                 
-              with st.container():
-                st.subheader("Du möchtest jetzt eine Verbindung buchen?")
-                st.write("[Hier geht es direkt zur Bahn-Webseite](https://www.bahn.de/)")
+            with st.container():
+             st.subheader("Du möchtest jetzt eine Verbindung buchen?")
+             st.write("[Hier geht es direkt zur Bahn-Webseite](https://www.bahn.de/)")
+            with coll1:
+
+                data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
+
+                df_diagramm= pd.DataFrame(data_tabelle)
+
+                date_list = df_diagramm['anfrage_tag'].unique()
+
+                date = st.selectbox("Wähle ein Datum:",date_list)
+
+
+                fig = px.line(df_diagramm[df_diagramm['anfrage_tag'] == date], 
+                x = "anfrage_uhrzeit", y = "preis", title = date)
+                st.plotly_chart(fig)
+                
                 with coll1:
 
-                  data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
+                cursor.execute(f"SELECT DISTINCT anfrage_tag FROM {boxen}")
 
-                  df_diagramm= pd.DataFrame(data_tabelle)
+                inhalt = cursor.fetchall()
+                mins=[]
+                maxs=[]
+                dates=[]
 
-                  date_list = df_diagramm['anfrage_tag'].unique()
+                for d in inhalt:
+                    date=str(d[0])
+                    cursor.execute(f"SELECT MIN(preis), MAX(preis) FROM {boxen} WHERE anfrage_tag = '{date}' ") 
+                    res=cursor.fetchone()
+                    mini=res[0]
+                    maxi=res[1]
+                    mins.append(mini)
+                    maxs.append(maxi)
+                    dates.append(date)
 
-                  date = st.selectbox("Wähle ein Datum:",date_list)
+            df=pd.DataFrame({'Datum':dates, 'Maximum': maxs, 'Minimum':mins})
 
-
-                  fig = px.line(df_diagramm[df_diagramm['anfrage_tag'] == date], 
-                  x = "anfrage_uhrzeit", y = "preis", title = date)
-                  st.plotly_chart(fig)
-                  
-                  with coll1:
-
-                    cursor.execute(f"SELECT DISTINCT anfrage_tag FROM {boxen}")
-
-                    inhalt = cursor.fetchall()
-                    mins=[]
-                    maxs=[]
-                    dates=[]
-
-                    for d in inhalt:
-                     date=str(d[0])
-                     cursor.execute(f"SELECT MIN(preis), MAX(preis) FROM {boxen} WHERE anfrage_tag = '{date}' ") 
-                     res=cursor.fetchone()
-                     mini=res[0]
-                     maxi=res[1]
-                     mins.append(mini)
-                     maxs.append(maxi)
-                     dates.append(date)
-
-                df=pd.DataFrame({'Datum':dates, 'Maximum': maxs, 'Minimum':mins})
-
-                st.write("In der folgenden Tabelle ist der Maximalpreis sowie der Minimalpreis für deine abgefragte Verbindung aufgetragen. Diese ermöglichen eine Einschätzung, in welchem Preisrahmen sich deine Verbindung vermutlich bewegen wird. ")
-                st.table(df)
+            st.write("In der folgenden Tabelle ist der Maximalpreis sowie der Minimalpreis für deine abgefragte Verbindung aufgetragen. Diese ermöglichen eine Einschätzung, in welchem Preisrahmen sich deine Verbindung vermutlich bewegen wird. ")
+            st.table(df)
 
                     
                    
