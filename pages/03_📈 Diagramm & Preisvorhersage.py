@@ -24,54 +24,51 @@ cursor = conn.cursor()
 
 def app():
   coll1,coll2,coll3,coll4=st.columns(4)
-  
+   
+
   with coll1:
-    loginname=st.text_input("Benutzer: ")
+        loginname=st.text_input("Login: ")
+        loginpassw=st.text_input("Passwort:",type="password")
+        anfragenlistebenutzer=[]
 
-  with coll2:
-    loginpassw=st.text_input("Passwort:")
-    anfragenlistebenutzer=[]
-    abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
-    if not cursor.fetchone():  # An empty result evaluates to False.
-        st.write("Kein Benutzer mit diesem Benutzernamen")
-    else:
-        abfragep = cursor.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginpassw])
+
+        abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
         if not cursor.fetchone():  # An empty result evaluates to False.
-            st.write("Falsches Passwort")
+            st.write("Kein Benutzer mit diesem Benutzernamen")
         else:
-            st.write("Sie haben sich erfolgreich eingeloggt")
-            richtigentabellen=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [loginname])
-            alleanfragen=cursor.fetchall()
-            if alleanfragen==None:
-                st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
+            abfragep = cursor.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginpassw])
+            if not cursor.fetchone():  # An empty result evaluates to False.
+                st.write("Falsches Passwort")
             else:
-                listes=[]
-                for b in alleanfragen:
-                  liste=b[0]
-                  listes.append(liste)                  
+                st.write("Sie haben sich erfolgreich eingeloggt")
 
-                  boxen=st.selectbox("Tabelle: ", listes)
-                  
-
-                  data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
-
-                  df_diagramm= pd.DataFrame(data_tabelle)
-                  date_list = df_diagramm['anfrage_tag'].unique()
-
-
-                  date = st.selectbox("Wähle ein Datum:",date_list)
+                richtigentabellen=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [loginname])
+                alleanfragen=cursor.fetchall()
+                if alleanfragen==None:
+                    st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
+                else:
+                    st.table(alleanfragen)
+                    listes=[]
+                    for b in alleanfragen:
+                      liste=b[0]
+                      listes.append(liste)                   
+                    boxen=st.selectbox("Tabelle: ", listes)
 
 
-                  fig = px.line(df_diagramm[df_diagramm['anfrage_tag'] == date], 
-                  x = "anfrage_uhrzeit", y = "preis", title = date)
-                  st.plotly_chart(fig)
 
-                  cursor.execute(f"SELECT DISTINCT anfrage_tag FROM {boxen}")
+                    date = st.selectbox("Wähle ein Datum:",date_list)
 
-                  inhalt = cursor.fetchall()
-                  mins=[]
-                  maxs=[]
-                  dates=[]
+
+                    fig = px.line(df_diagramm[df_diagramm['anfrage_tag'] == date], 
+                    x = "anfrage_uhrzeit", y = "preis", title = date)
+                    st.plotly_chart(fig)
+
+                    cursor.execute(f"SELECT DISTINCT anfrage_tag FROM {boxen}")
+
+                    inhalt = cursor.fetchall()
+                    mins=[]
+                    maxs=[]
+                    dates=[]
 
 
 
