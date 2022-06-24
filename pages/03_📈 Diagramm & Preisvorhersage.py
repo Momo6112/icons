@@ -23,7 +23,7 @@ engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0f
 cursor = conn.cursor()
 
 def app():
-  coll1,coll2,coll3,coll4=st.columns(4)
+  coll1,coll2,coll3,coll4,coll5=st.columns(4)
   
   with coll1:
     with coll2:
@@ -54,6 +54,7 @@ def app():
                     with coll4:
      
                       boxen=st.selectbox("Tabelle: ", listes)
+                    with coll5:
 
                       data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
 
