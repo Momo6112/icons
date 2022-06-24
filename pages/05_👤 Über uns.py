@@ -83,8 +83,8 @@ def app():
 app()
 
 def app2():
+     st.subheader("Kontakt")
      strings2=(
-               "Kontakt:" 
                "\n"
                "\n"
                "Artur Sichwardt:	artur.sichwardt@alumni.fh-aachen.de"
