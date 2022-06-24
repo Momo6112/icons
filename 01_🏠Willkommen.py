@@ -157,32 +157,32 @@ def app():
             zielbahn=st.selectbox("Zielbahnhof auswählen", optionliste)
             st.write("Ihr Zielbahnhof ist:", zielbahn)
     with col2:
-              st.subheader("Abfahrt")
-              losdatum=st.date_input('Datum', value= pd.to_datetime("today"))
-              st.write("Datum:", losdatum.strftime("%d.%m.%Y"))
-              if "lade" not in st.session_state :
-                st.session_state.lade=TRUE            
-              uhrzeit_stunde1=st.number_input("Stunde: ", min_value=1,value=12,max_value=24,step=1)
-              st.write("Stunde: ", uhrzeit_stunde1)
+            st.subheader("Abfahrt")
+            losdatum=st.date_input('Datum', value= pd.to_datetime("today"))
+            st.write("Datum:", losdatum.strftime("%d.%m.%Y"))
+            if "lade" not in st.session_state :
+              st.session_state.lade=TRUE            
+            uhrzeit_stunde1=st.number_input("Stunde: ", min_value=1,value=12,max_value=24,step=1)
+            st.write("Stunde: ", uhrzeit_stunde1)
 
-              if "min" not in st.session_state :
-                st.session_state.min=TRUE 
-              uhrzeit_minuten1=st.number_input("Minute: ",min_value=00,max_value=59,step=1) 
-              st.write("Minute: ", uhrzeit_minuten1)
+            if "min" not in st.session_state :
+              st.session_state.min=TRUE 
+            uhrzeit_minuten1=st.number_input("Minute: ",min_value=00,max_value=59,step=1) 
+            st.write("Minute: ", uhrzeit_minuten1)
 
     with col3:
-                st.subheader("Alter & Bahnkarte")
-                if "alt" not in st.session_state :
-                  st.session_state.alt=TRUE 
-                alter_1=st.number_input("Alter: ",min_value=1,value=18,max_value=110,step=1) 
-                st.write("Alter: ", alter_1),
+            st.subheader("Alter & Bahnkarte")
+            if "alt" not in st.session_state :
+              st.session_state.alt=TRUE 
+            alter_1=st.number_input("Alter: ",min_value=1,value=18,max_value=110,step=1) 
+            st.write("Alter: ", alter_1),
 
-                bahnkarteneu=st.selectbox("Bahnkarte:", bahnkarteliste)
-                st.write("Bahnkarte:", bahnkarteneu)
+            bahnkarteneu=st.selectbox("Bahnkarte:", bahnkarteliste)
+            st.write("Bahnkarte:", bahnkarteneu)
 
 
     with st.form(key='form'):
-        submit_buttonhome = st.form_submit_button(label='Bestätigen')
+         submit_buttonhome = st.form_submit_button(label='Bestätigen')
 
     start=option
     ziel=zielbahn
