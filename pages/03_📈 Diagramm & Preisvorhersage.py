@@ -106,22 +106,22 @@ def app():
                 
                 with coll1:
 
-                cursor.execute(f"SELECT DISTINCT anfrage_tag FROM {boxen}")
+                    cursor.execute(f"SELECT DISTINCT anfrage_tag FROM {boxen}")
 
-                inhalt = cursor.fetchall()
-                mins=[]
-                maxs=[]
-                dates=[]
+                    inhalt = cursor.fetchall()
+                    mins=[]
+                    maxs=[]
+                    dates=[]
 
-                for d in inhalt:
-                    date=str(d[0])
-                    cursor.execute(f"SELECT MIN(preis), MAX(preis) FROM {boxen} WHERE anfrage_tag = '{date}' ") 
-                    res=cursor.fetchone()
-                    mini=res[0]
-                    maxi=res[1]
-                    mins.append(mini)
-                    maxs.append(maxi)
-                    dates.append(date)
+                    for d in inhalt:
+                        date=str(d[0])
+                        cursor.execute(f"SELECT MIN(preis), MAX(preis) FROM {boxen} WHERE anfrage_tag = '{date}' ") 
+                        res=cursor.fetchone()
+                        mini=res[0]
+                        maxi=res[1]
+                        mins.append(mini)
+                        maxs.append(maxi)
+                        dates.append(date)
 
             df=pd.DataFrame({'Datum':dates, 'Maximum': maxs, 'Minimum':mins})
 
