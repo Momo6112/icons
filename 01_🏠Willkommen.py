@@ -389,7 +389,7 @@ def app():
 
                        register = st.form_submit_button(label="Registrieren")
 
-                      def add_userdata(eingabe,passw1):
+                       def add_userdata(eingabe,passw1):
                               anf=cur.execute("Select login.username From login where username=%s",[eingabe])
                               if not cur.fetchone():
                                   result=pandas.DataFrame(columns=["username","passwort"])
@@ -397,14 +397,13 @@ def app():
                                   result.to_sql(name="login", con=engine, if_exists="append")
                                   result=result[0:0]
                                   st.info("Erfolgreich registriert")
-                                  st.success("Sie können sich nun einloggen, wählen Sie dazu oben die Funktion einloggen aus")
+                                  st.success("Sie können sich nun einloggen, wähle dazu oben die Option anmelden aus")
 
                               else:
                                   st.warning("Der Benutzername existiert bereits")
 
-
-                    if register:   
-                        add_userdata(eingabe,passw1)
+                       if register:   
+                            add_userdata(eingabe,passw1)
                     
 
        
