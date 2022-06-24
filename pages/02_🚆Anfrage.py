@@ -286,6 +286,6 @@ def app():
                   else:
                      st.warning("Sie haben bereits eine solche Tabelle angelegt")
   if submit_buttonhome:
-    mehrereanfragen(benut,st.session_state.wunsche)
+    mehrereanfragen(benut,tabe)
 app()
               
