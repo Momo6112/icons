@@ -49,10 +49,7 @@ def app():
                
                 
                 st.write("\n")
-            
-             
-                st.write("Du möchtest jetzt eine Verbindung buchen?")
-                st.subheader("Dann hier lang: [Hier geht es direkt zur Bahn-Webseite](https://www.bahn.de/)")
+        
                 with coll1:
 
                    data_tabelle = cursor.execute(f"SELECT * FROM {boxen}")
@@ -141,7 +138,9 @@ def app():
                     preis2=str(round(preis, 2))+ ' EUR'
                     st.subheader('Der prognostizierte Preis beträgt morgen:  ')
                     st.subheader(preis2)
-                    st.write('Bitte beachte, dass es sich bei dem prognostizierten Preis nur um eine Vorhersage handelt. Diese wurde mithilfe von Data-Mining Methoden generiert. Es bedeutet nicht, dass dieser Preis wirklich eintritt. ')
+                    st.write('Bitte beachte, dass es sich bei dem prognostizierten Preis nur um einen geschätzten Preis handelt. Dieser wurde mithilfe von Data-Mining Methoden generiert. Das tatsächliche Eintreten kann jedoch nicht garantiert werden. ')
                 else:
                     st.subheader("Es liegen zu wenige Daten vor um eine Preisvorhersage zu generieren!")
+                st.subheader("Du möchtest jetzt eine Verbindung buchen?")
+                st.write("Dann hier lang: [Hier geht es direkt zur Bahn-Webseite](https://www.bahn.de/)")
 app()
