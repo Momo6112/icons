@@ -175,9 +175,7 @@ def app():
             bahnkarteneu=st.selectbox("Bahnkarte:", bahnkarteliste)
             st.write("Bahnkarte:", bahnkarteneu)
 
-
-    with st.form(key='form'):
-            submit_buttonhome = st.form_submit_button(label='Bestätigen')
+            submit_buttonhome = st.checkbox(label='Bestätigen')
     if submit_buttonhome:
       if 'sub' not in st.session_state:
         st.session_state.sub= True
