@@ -159,6 +159,7 @@ def app():
             st.write('Ihr ausgewählter Startbahnhof:', option)
             zielbahn=st.selectbox("Zielbahnhof auswählen", optionliste)
             st.write("Ihr Zielbahnhof ist:", zielbahn)
+            submit_buttonhome = st.checkbox(label='Bestätigen')
     with col2:
             st.subheader("Abfahrt")
             losdatum=st.date_input('Datum', value= pd.to_datetime("today"))
@@ -175,7 +176,7 @@ def app():
             bahnkarteneu=st.selectbox("Bahnkarte:", bahnkarteliste)
             st.write("Bahnkarte:", bahnkarteneu)
 
-            submit_buttonhome = st.checkbox(label='Bestätigen')
+           
     if submit_buttonhome:
       if 'sub' not in st.session_state:
         st.session_state.sub= True
@@ -242,7 +243,7 @@ def app():
                   st.write("Fahrzeit: ",zeiten_zv1)
                   st.write("Preis: ",sparpreis_zv)
                   coll1,coll2,coll3=st.columns(3)
-                  with coll2:
+                  with coll1:
                     st.info("Zum Speichern unten registrieren/einloggen")
                     with st.form("log1"):
                       option = st.selectbox(
@@ -250,7 +251,7 @@ def app():
                       (" ",'Einloggen', 'Registrieren'))
                       sbest=st.form_submit_button("Auswählen")
                   if option=="Einloggen":
-                    with coll1:
+                    with coll2:
                       with st.form("log"):
                           loginn=st.text_input("Benutzername: ")
                           loginp=st.text_input("Passwort: ",type="password")
@@ -278,6 +279,8 @@ def app():
                                       st.session_state.passw=loginp
                       if best:
                           Login(loginn,loginp)
+                          if 'will' not in st.session_state:
+                            st.session_state.will= True
                           wunsch=st.text_input("Anfrage speichern in :")
                           tabe=''.join(wunsch)
 
