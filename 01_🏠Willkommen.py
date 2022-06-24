@@ -362,8 +362,7 @@ def app():
                                                   st.success("Sie haben die Anfrage erfolgreich gestellt")
                                                 else:
                                                    st.warning("Sie haben bereits eine solche Tabelle angelegt")
-                                if anlegen:
-                                  mehrereanfragen(benut,tabe)
+                                
                                             #weiter2=st.form_submit_button("Fortfahren zum Diagramm/Preisvorhersage")
 
 
