@@ -173,4 +173,4 @@ def app():
                 st.subheader('Der prognostizierte Preis beträgt morgen:  ')
                 st.subheader(preis2)
 
-app()
+ app()
