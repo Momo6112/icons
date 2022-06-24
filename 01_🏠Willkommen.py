@@ -255,7 +255,7 @@ def app():
                          loginn=st.text_input("Benutzername: ",st.session_state.name)
             
                     with coll2:
-                          loginp=st.text_input("Passwort: ",type="password",st.session_state.name)
+                          loginp=st.text_input("Passwort: ",type="password")
                           #best=st.form_submit_button("Anfrage speichern")
                     best= st.checkbox(label='Anfrage speichern')
                     with coll3:
