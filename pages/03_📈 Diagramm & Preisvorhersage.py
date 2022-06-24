@@ -26,7 +26,7 @@ def app():
   with coll2:
     loginpassw=st.text_input("Passwort:",type="password")
     anfragenlistebenutzer=[]
-  with coll3:
+  with st.container():
     abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
     if not cursor.fetchone():  # An empty result evaluates to False.
         st.write("Kein Benutzer mit diesem Benutzernamen")
@@ -46,38 +46,11 @@ def app():
                   liste=b[0]
                   listes.append(liste)                   
                 boxen=st.selectbox("Tabelle: ", listes)
+               
                 
-                
                 st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
+            
+             
                 st.write("Du möchtest jetzt eine Verbindung buchen?")
                 st.subheader("Dann hier lang: [Hier geht es direkt zur Bahn-Webseite](https://www.bahn.de/)")
                 with coll1:
