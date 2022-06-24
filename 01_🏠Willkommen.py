@@ -242,7 +242,7 @@ def app():
                   st.write("Preis: ",sparpreis_zv)
                   
                   with st.container():
-                    st.info("Wenn Du Deine Anfrage speichern möchten, müsst Du Dich bitte zuerst anmelden bzw. registrieren.")
+                    st.info("Wenn Du Deine Anfrage speichern möchten, musst Du Dich bitte zuerst anmelden bzw. registrieren.")
                     with st.form("log1"):
                       option = st.selectbox(
                       'Wähle eine der folgenden Optionen:',
@@ -256,11 +256,10 @@ def app():
               
                     with coll2:
                           loginp=st.text_input("Passwort: ",type="password")
+                          best=st.form_submit_button("Anfrage speichern")
                     with coll3:
                           wunsch=st.text_input("Gib deiner Anfrage einen Namen:")
                           tabe=''.join(wunsch)
-
-                          best=st.form_submit_button("Anfrage speichern")
                           def Login(loginn,loginp): 
                                 abfrage = cur.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
                                 if not cur.fetchone():  # An empty result evaluates to False.
