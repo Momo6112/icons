@@ -73,13 +73,14 @@ def app():
                "Damit soll vermieden werden, dass ihr selbst ständig eure Verbindung aktualisieren müsst." "\n"
                "So spart ihr mit DB-Price-APP  im Idealfall nicht nur Geld sondern auch noch Zeit und Nerven ;-)"  
                "\n" )
-     st.write(strings)
-     lottie_url_hello = "https://assets9.lottiefiles.com/packages/lf20_p4kr3lub.json"
+   st.write(strings)
+   lottie_url_hello = "https://assets9.lottiefiles.com/packages/lf20_p4kr3lub.json"
  #"https://assets3.lottiefiles.com/packages/lf20_E3exCx.json"
-     lottie_hello = load_lottieurl(lottie_url_hello)
-     st_lottie(lottie_hello, key="hello")
+   lottie_hello = load_lottieurl(lottie_url_hello)
+   st_lottie(lottie_hello, key="hello")
+app()
 
-
+def app2():
      strings2=(
                "Kontakt:" 
                "\n"
@@ -102,9 +103,7 @@ def app():
                "Lina Koppany: 	lina.koppany@alumni.fh-Aachen.de""\n"
             )
    st.write(strings2)
+app2()
    
-   
-   
-app()
 load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_p4kr3lub.json")
 
