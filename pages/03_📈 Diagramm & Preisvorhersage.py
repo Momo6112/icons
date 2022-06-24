@@ -89,7 +89,7 @@ def app():
                 st.subheader("Dann hier lang: [Hier geht es direkt zur Bahn-Webseite](https://www.bahn.de/)")
                 with coll1:
 
-                  data_tabelle = cursor.execute(f"SELECT * FROM {boxen}")
+                  data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
 
                   df_diagramm= pd.DataFrame(data_tabelle)
 
