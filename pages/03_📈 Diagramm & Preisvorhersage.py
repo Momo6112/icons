@@ -89,12 +89,12 @@ def app():
                      dates.append(date)
 
                     df=pd.DataFrame({'Datum':dates, 'Maximum': maxs, 'Minimum':mins})
-
-
+                    
+                    st.write("In der folgenden Tabelle ist der Maximalpreis sowie der Minimalpreis für die Abgefragte Verbindung aufgetragen. Diese ermöglichen eine Einschätzung, in welchem Preisrahmen sich deine Verbindung vermutlich bewegen wird. ")
                     st.table(df)
                   with coll1:
                     
-                    st.write("In der folgenden Tabelle ist der Maximalpreis sowie der Minimalpreis für die Abgefragte Verbindung aufgetragen. Diese ermöglichen eine Einschätzung, in welchem Preisrahmen sich deine Verbindung vermutlich bewegen wird. ")
+                   
                     zeilenanzahl = df.shape[0]                  
                     if zeilenanzahl > 5: 
 
