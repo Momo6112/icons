@@ -69,7 +69,7 @@ def app():
                   x = "anfrage_uhrzeit", y = "preis", title = date)
                   st.plotly_chart(fig)
                   
-                  with coll1:
+                  with coll3:
 
                     cursor.execute(f"SELECT DISTINCT anfrage_tag FROM {boxen}")
 
@@ -92,6 +92,7 @@ def app():
 
 
                     st.table(df)
+                  with coll1:
 
                     zeilenanzahl = df.shape[0]                  
                     if zeilenanzahl > 5: 
