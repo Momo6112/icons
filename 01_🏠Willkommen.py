@@ -240,10 +240,7 @@ def app():
                   st.write("Fahrzeit: ",zeiten_zv1)
                   st.write("Preis: ",sparpreis_zv)
 
-        conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com",
-                              database="dbticket", 
-                              user="dbticket_user", 
-                              password="Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy")
+       
 
     #engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy@dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com/dbticket')
     #cursor = conn.cursor()
