@@ -58,7 +58,7 @@ def app():
                   date_list = df_diagramm['anfrage_tag'].unique()
 
 
-                  date = st.multiselect("Wähle ein Datum:",date_list)
+                  date = st.selectbox("Wähle ein Datum:",date_list)
 
 
                   fig = px.line(df_diagramm[df_diagramm['anfrage_tag'] == date], 
