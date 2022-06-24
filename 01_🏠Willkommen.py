@@ -245,14 +245,15 @@ def app():
                     st.info("Wenn Du Deine Anfrage speichern möchten, müsst Du Dich bitte zuerst anmelden bzw. registrieren.")
                     with st.form("log1"):
                       option = st.selectbox(
-                      'Wähle eine der folgenden Optionen',
+                      'Wähle eine der folgenden Optionen:',
                       ("bitte auswählen",'Anmelden', 'Registrieren'))
                       sbest=st.form_submit_button("Auswählen")
                   if option=="Anmelden":
                     coll1,coll2,coll3=st.columns(3)
                     with coll1:
-                      with st.form("log"):
-                          loginn=st.text_input("Benutzername: ")
+                      #with st.form("log"):
+                         loginn=st.text_input("Benutzername: ")
+              
                     with coll2:
                           loginp=st.text_input("Passwort: ",type="password")
                     with coll3:
