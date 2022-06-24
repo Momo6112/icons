@@ -176,7 +176,7 @@ def app():
 
     with st.form(key='form'):
             submit_buttonhome = st.form_submit_button(label='Bestätigen')
-    id submit_buttonhome:
+    if submit_buttonhome:
       start=option
       ziel=zielbahn
       datum=losdatum.strftime("%d.%m.%Y") 
