@@ -85,8 +85,10 @@ def app():
                 st.write("\n")
                 st.write("\n")
                 st.write("\n")
-                st.write("Du möchtest jetzt eine Verbindung buchen?")
-                st.subheader("Dann hier lang: [Hier geht es direkt zur Bahn-Webseite](https://www.bahn.de/)")
+                
+                with st.container():
+                st.subheader("Du möchtest jetzt eine Verbindung buchen?")
+                st.write("[Hier geht es direkt zur Bahn-Webseite](https://www.bahn.de/)")
                 with coll1:
 
                   data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
