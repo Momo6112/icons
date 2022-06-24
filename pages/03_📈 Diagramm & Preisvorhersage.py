@@ -26,10 +26,10 @@ def app():
   coll1,coll2,coll3,coll4=st.columns(4)
   
   with coll1:
-    loginname=st.text_input("Benutzer: ",st.session_state.name)
+    loginname=st.text_input("Benutzer: ")
   
   with coll2:
-    loginpassw=st.text_input("Passwort:",st.session_state.passw)
+    loginpassw=st.text_input("Passwort:")
     anfragenlistebenutzer=[]
     abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
     if not cursor.fetchone():  # An empty result evaluates to False.
