@@ -68,27 +68,29 @@ def app():
                   fig = px.line(df_diagramm[df_diagramm['anfrage_tag'] == date], 
                   x = "anfrage_uhrzeit", y = "preis", title = date)
                   st.plotly_chart(fig)
-
-                  cursor.execute(f"SELECT DISTINCT anfrage_tag FROM {boxen}")
-
-                  inhalt = cursor.fetchall()
-                  mins=[]
-                  maxs=[]
-                  dates=[]
-
-                  for d in inhalt:
-                   date=str(d[0])
-                   cursor.execute(f"SELECT MIN(preis), MAX(preis) FROM {boxen} WHERE anfrage_tag = '{date}' ") 
-                   res=cursor.fetchone()
-                   mini=res[0]
-                   maxi=res[1]
-                   mins.append(mini)
-                   maxs.append(maxi)
-                   dates.append(date)
-
-                  df=pd.DataFrame({'Datum':dates, 'Maximum': maxs, 'Minimum':mins})
                   
                   with coll2:
+
+                    cursor.execute(f"SELECT DISTINCT anfrage_tag FROM {boxen}")
+
+                    inhalt = cursor.fetchall()
+                    mins=[]
+                    maxs=[]
+                    dates=[]
+
+                    for d in inhalt:
+                     date=str(d[0])
+                     cursor.execute(f"SELECT MIN(preis), MAX(preis) FROM {boxen} WHERE anfrage_tag = '{date}' ") 
+                     res=cursor.fetchone()
+                     mini=res[0]
+                     maxi=res[1]
+                     mins.append(mini)
+                     maxs.append(maxi)
+                     dates.append(date)
+
+                    df=pd.DataFrame({'Datum':dates, 'Maximum': maxs, 'Minimum':mins})
+
+
                     st.table(df)
 
                     zeilenanzahl = df.shape[0]                  
