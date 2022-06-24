@@ -161,19 +161,18 @@ def app():
             losdatum=st.date_input('Datum', value= pd.to_datetime("today"))
             st.write("Datum:", losdatum.strftime("%d.%m.%Y"))
             if "lade" not in st.session_state :
-              st.session_state.lade=TRUE            
+                st.session_state.lade=TRUE            
             uhrzeit_stunde1=st.number_input("Stunde: ", min_value=1,value=12,max_value=24,step=1)
             st.write("Stunde: ", uhrzeit_stunde1)
 
             if "min" not in st.session_state :
-              st.session_state.min=TRUE 
+                st.session_state.min=TRUE 
             uhrzeit_minuten1=st.number_input("Minute: ",min_value=00,max_value=59,step=1) 
             st.write("Minute: ", uhrzeit_minuten1)
-
     with col3:
             st.subheader("Alter & Bahnkarte")
             if "alt" not in st.session_state :
-              st.session_state.alt=TRUE 
+                st.session_state.alt=TRUE 
             alter_1=st.number_input("Alter: ",min_value=1,value=18,max_value=110,step=1) 
             st.write("Alter: ", alter_1),
 
@@ -182,7 +181,7 @@ def app():
 
 
     with st.form(key='form'):
-         submit_buttonhome = st.form_submit_button(label='Bestätigen')
+            submit_buttonhome = st.form_submit_button(label='Bestätigen')
 
     start=option
     ziel=zielbahn
@@ -252,8 +251,8 @@ def app():
                               user="dbticket_user", 
                               password="Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy")
 
-    engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy@dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com/dbticket')
-    cursor = conn.cursor()
+    #engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy@dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com/dbticket')
+    #cursor = conn.cursor()
 
 
    
@@ -342,10 +341,3 @@ def app():
         #if register:   
             #add_userdata(eingabe,passw1)
 app()
-
-                         
-            
-            
-            
-        
-
