@@ -28,7 +28,6 @@ engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0f
 global cursor 
 cur = conn.cursor()
 
-
 def app():
     st.set_page_config("DB","house",layout="wide")
     st.title("DB Price App")
@@ -172,7 +171,6 @@ def app():
             st.subheader("Alter & Bahnkarte")
             alter_1=st.number_input("Alter: ",min_value=1,value=18,max_value=110,step=1) 
             st.write("Alter: ", alter_1),
-
             bahnkarteneu=st.selectbox("Bahnkarte:", bahnkarteliste)
             st.write("Bahnkarte:", bahnkarteneu)
 
@@ -223,12 +221,12 @@ def app():
       sparpreis_zv=sparpreis_zv3.replace("ab","€")
 
       if "Verbindung liegt in der Vergangenheit" in sparpreis_zv1: 
-          st.info("Diese Verbindung liegt in der Vergangenheit. Wählen Sie eine andere Verbindung")
+          st.info("Diese Verbindung liegt in der Vergangenheit. Bitte wählen Sie eine andere Verbindung.")
 
       else: 
           if "THA" in art_zug_zv2:
 
-              st.write("Diese Zugverbindung wird nicht von uns unterstüzt. Bitte wählen Sie eine Verbindung der Züge von der DB.")
+              st.write("Diese Zugverbindung wird nicht von uns unterstüzt. Bitte wählen Sie eine Zugverbindung von der DB.")
 
 
           else: 
@@ -251,11 +249,11 @@ def app():
                       (" ",'Einloggen', 'Registrieren'))
                       sbest=st.form_submit_button("Auswählen")
                   if option=="Einloggen":
-                    with coll2:
+                    with st.container():
                       with st.form("log"):
                           loginn=st.text_input("Benutzername: ")
                           loginp=st.text_input("Passwort: ",type="password")
-                          wunsch=st.text_input("Anfrage speichern in :")
+                          wunsch=st.text_input("Geben Sie Ihrer Anfrage einen Namen :")
                           tabe=''.join(wunsch)
 
                           best=st.form_submit_button("Prüfen und Tabelle anlegen")
