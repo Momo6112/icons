@@ -252,10 +252,10 @@ def app():
                     coll1,coll2,coll3=st.columns(3)
                     with coll1:
                       #with st.form("log"):
-                         loginn=st.text_input("Benutzername: ")
-              
+                         loginn=st.text_input("Benutzername: ",st.session_state.name)
+            
                     with coll2:
-                          loginp=st.text_input("Passwort: ",type="password")
+                          loginp=st.text_input("Passwort: ",type="password",st.session_state.name)
                           #best=st.form_submit_button("Anfrage speichern")
                     best= st.checkbox(label='Anfrage speichern')
                     with coll3:
