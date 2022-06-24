@@ -256,7 +256,7 @@ def app():
                           loginn=st.text_input("Benutzername: ")
                           loginp=st.text_input("Passwort: ",type="password")
 
-                      best=st.checkbox("Prüfen")
+                          best=st.form_submit_button("Prüfen")
                       def Login(loginn,loginp): 
                           abfrage = cur.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
                           if not cur.fetchone():  # An empty result evaluates to False.
@@ -272,9 +272,7 @@ def app():
                                       st.session_state.will= True
                                     wunsch=st.text_input("Anfrage speichern in :")
                                     tabe=''.join(wunsch)
-
-                                    with st.form("log4"):
-                                      anlegen = st.form_submit_button(label='Tabelle anlegen')
+                                    anlegen = st.button(label='Tabelle anlegen')
 
                                     def mehrereanfragen(user,wunsch):
                                                   tababfrage=cursor.execute("Select anfragen.tabelle From anfragen where username=%s and tabelle=%s",[user,wunsch])
