@@ -61,7 +61,7 @@ def app():
                 st.write("\n")
                 st.write("\n")
                 st.write("\n")
-                st.write("Test)
+                st.write("Test")
                 
                 with coll1:
 
