@@ -58,7 +58,9 @@ def app():
         for tabell in alleanfragen1:
             anfragenlistebenutzer.append(tabell[0])
       boxen1=st.selectbox("Für folgende Anfrage:", anfragenlistebenutzer)
-      tabell2=cursor.execute(f'SELECT * FROM {boxen1}')
+       print(boxen1)
+      temp_query="SELECT * from " + boxen1)
+      tabell2 = cursor.execute(temp_query)
       prei=cursor.fetchall()
       df_diagramm= pd.DataFrame(tabell2)
       st.table(df_diagramm)
