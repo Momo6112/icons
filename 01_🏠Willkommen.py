@@ -170,7 +170,7 @@ def app():
     with col3:
             st.subheader("Alter & Bahnkarte")
             alter_1=st.number_input("Alter: ",min_value=1,value=18,max_value=110,step=1) 
-            st.write("Alter: ", alter_1),
+            st.write("Alter: ", alter_1)
             bahnkarteneu=st.selectbox("Bahnkarte:", bahnkarteliste)
             st.write("Bahnkarte:", bahnkarteneu)
 
