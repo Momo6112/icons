@@ -46,9 +46,8 @@ def app():
             if alleanfragen==None:
                 st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
             else:
-                st.table(alleanfragen)
-                  listes=[]
-                  for b in alleanfragen:
+                listes=[]
+                 for b in alleanfragen:
                     liste=b[0]
                     listes.append(liste)                 
                 boxen=st.selectbox("Tabelle: ", listes)
