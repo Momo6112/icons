@@ -87,11 +87,8 @@ def app():
                 st.write("\n")
                 st.write("\n")
                 st.write("\n")
-                st.write("\n")
-                st.write("\n")
-                st.write("\n")
                 st.write("Du möchtest jetzt eine Verbindung buchen?")
-                st.write("Hier geht es zur Bahn-Webseite [link](https://www.bahn.de/)")
+                st.subheader("Hier geht es zur Bahn-Webseite [link](https://www.bahn.de/)")
                 with coll1:
 
                   data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
@@ -128,7 +125,7 @@ def app():
 
                     df=pd.DataFrame({'Datum':dates, 'Maximum': maxs, 'Minimum':mins})
                     
-                    st.subheader("In der folgenden Tabelle ist der Maximalpreis sowie der Minimalpreis für deine abgefragte Verbindung aufgetragen. Diese ermöglichen eine Einschätzung, in welchem Preisrahmen sich deine Verbindung vermutlich bewegen wird. ")
+                    st.write("In der folgenden Tabelle ist der Maximalpreis sowie der Minimalpreis für deine abgefragte Verbindung aufgetragen. Diese ermöglichen eine Einschätzung, in welchem Preisrahmen sich deine Verbindung vermutlich bewegen wird. ")
                     st.table(df)
                   
                     
