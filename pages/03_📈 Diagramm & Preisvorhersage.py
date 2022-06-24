@@ -28,6 +28,7 @@ def app():
 
   with coll1:
         loginname=st.text_input("Login: ")
+      with coll2:
         loginpassw=st.text_input("Passwort:",type="password")
         anfragenlistebenutzer=[]
 
