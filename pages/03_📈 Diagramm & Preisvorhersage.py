@@ -48,11 +48,9 @@ def app():
                 listes=[]
                 for b in alleanfragen:
                   liste=b[0]
-                  listes.append(liste)
+                  listes.append(liste)                  
 
-                  with coll3:
-
-                    boxen=st.selectbox("Tabelle: ", listes)
+                  boxen=st.selectbox("Tabelle: ", listes)
                   with coll1:
 
                     data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
