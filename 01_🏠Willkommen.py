@@ -179,6 +179,8 @@ def app():
     with st.form(key='form'):
             submit_buttonhome = st.form_submit_button(label='Bestätigen')
     if submit_buttonhome:
+      if 'sub' not in st.session_state:
+        st.session_state.sub= True
       start=option
       ziel=zielbahn
       datum=losdatum.strftime("%d.%m.%Y") 
