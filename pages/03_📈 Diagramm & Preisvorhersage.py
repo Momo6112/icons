@@ -11,21 +11,16 @@ import plotly.express as px
 from tensorflow import keras 
 from keras.models import Sequential
 from keras.layers import Dense, LSTM, Dropout
-
 st.title("Preisvorhersage/Diagramm")
-
 conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com",
                       database="dbticket", 
                       user="dbticket_user", 
                       password="Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy")
-
 engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy@dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com/dbticket')
 cursor = conn.cursor()
-
 def app():
-  coll1,coll2,coll3=st.columns(3)
+  coll1,coll2,coll3,coll4=st.columns(4)
      
-
   with coll1:
         loginname=st.text_input("Login: ")
   with coll2:
@@ -41,13 +36,11 @@ def app():
             st.write("Falsches Passwort")
         else:
             st.success("Erfolgreich eingeloggt")
-
             richtigentabellen=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [loginname])
             alleanfragen=cursor.fetchall()
             if alleanfragen==None:
                 st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
             else:
-
                 listes=[]
                 for b in alleanfragen:
                   liste=b[0]
@@ -85,80 +78,59 @@ def app():
                 st.write("\n")
                 st.write("\n")
                 st.write("\n")
-                
-            with st.container():
-             st.subheader("Du möchtest jetzt eine Verbindung buchen?")
-             st.write("[Hier geht es direkt zur Bahn-Webseite](https://www.bahn.de/)")
-            with coll1:
+                st.write("Du möchtest jetzt eine Verbindung buchen?")
+                 st.subheader("Dann hier lang: [Hier geht es direkt zur Bahn-Webseite](https://www.bahn.de/)")
+                 with coll1:
 
-                data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
+                   data_tabelle = cursor.execute(f"SELECT * FROM {boxen}")
+                   data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
 
-                df_diagramm= pd.DataFrame(data_tabelle)
+                   df_diagramm= pd.DataFrame(data_tabelle)
 
-                date_list = df_diagramm['anfrage_tag'].unique()
-
-                date = st.selectbox("Wähle ein Datum:",date_list)
-
-
-                fig = px.line(df_diagramm[df_diagramm['anfrage_tag'] == date], 
-                x = "anfrage_uhrzeit", y = "preis", title = date)
-                st.plotly_chart(fig)
-                
-                with coll1:
-
+                  date_list = df_diagramm['anfrage_tag'].unique()
+                  date = st.selectbox("Wähle ein Datum:",date_list)
+                  fig = px.line(df_diagramm[df_diagramm['anfrage_tag'] == date], 
+                  x = "anfrage_uhrzeit", y = "preis", title = date)
+                  st.plotly_chart(fig)
+                  
+                  with coll1:
                     cursor.execute(f"SELECT DISTINCT anfrage_tag FROM {boxen}")
-
                     inhalt = cursor.fetchall()
                     mins=[]
                     maxs=[]
                     dates=[]
-
                     for d in inhalt:
-                        date=str(d[0])
-                        cursor.execute(f"SELECT MIN(preis), MAX(preis) FROM {boxen} WHERE anfrage_tag = '{date}' ") 
-                        res=cursor.fetchone()
-                        mini=res[0]
-                        maxi=res[1]
-                        mins.append(mini)
-                        maxs.append(maxi)
-                        dates.append(date)
-
-            df=pd.DataFrame({'Datum':dates, 'Maximum': maxs, 'Minimum':mins})
-
-            st.write("In der folgenden Tabelle ist der Maximalpreis sowie der Minimalpreis für deine abgefragte Verbindung aufgetragen. Diese ermöglichen eine Einschätzung, in welchem Preisrahmen sich deine Verbindung vermutlich bewegen wird. ")
-            st.table(df)
-
+                     date=str(d[0])
+                     cursor.execute(f"SELECT MIN(preis), MAX(preis) FROM {boxen} WHERE anfrage_tag = '{date}' ") 
+                     res=cursor.fetchone()
+                     mini=res[0]
+                     maxi=res[1]
+                     mins.append(mini)
+                     maxs.append(maxi)
+                     dates.append(date)
+                    df=pd.DataFrame({'Datum':dates, 'Maximum': maxs, 'Minimum':mins})
+                    
+                    st.write("In der folgenden Tabelle ist der Maximalpreis sowie der Minimalpreis für deine abgefragte Verbindung aufgetragen. Diese ermöglichen eine Einschätzung, in welchem Preisrahmen sich deine Verbindung vermutlich bewegen wird. ")
+                    st.table(df)
+                  
                     
                    
                     zeilenanzahl = df.shape[0]                  
                     if zeilenanzahl > 4: 
-
                       train_size = int(len(df) * 0.8)
                       df_train, df_test = df[:train_size], df[train_size:len(df)]
                       train_data = df_train.iloc[:, 1:2].values
-
                       from sklearn.preprocessing import MinMaxScaler
                       scaler = MinMaxScaler(feature_range=(0, 1))
                       train_data_scaled = scaler.fit_transform(train_data)
-
-
                       x_train = []
                       y_train = []
-
                       time_window = 3
-
                       for i in range(time_window, len(train_data_scaled)):
                           x_train.append(train_data_scaled[i-time_window:i, 0])
                           y_train.append(train_data_scaled[i, 0])
-
                       x_train, y_train = np.array(x_train), np.array(y_train)
-
                       x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
-
-
-
-
-
                       with st.spinner('Bitte warten, der prognostizierte Preis wird berechnet'):
                               time.sleep(45)
                       st.success('Ergebnis folgt')
@@ -170,51 +142,28 @@ def app():
                       model.add(LSTM(units=50))
                       model.add(Dropout(0.2))
                       model.add(Dense(units=1))
-
                       model.compile(optimizer='adam', loss='mean_squared_error')
-
                       model.fit(x_train, y_train, epochs=25, batch_size=32)
-
-
-
                       actual_stock_price = df_test.iloc[:, 1:2].values
-
                       total_data = pd.concat((df_train['Minimum'], df_test['Minimum']), axis=0)
                       test_data = total_data[len(total_data)-len(df_test)-time_window:].values
                       test_data = test_data.reshape(-1, 1)
                       test_data = scaler.transform(test_data)
-
-
-
                       total_dates = pd.concat((df_train['Datum'], df_test['Datum']), axis=0)
                       test_dates = total_dates[len(total_dates)-len(df_test)-time_window:].values
                       test_dates = test_dates.reshape(-1, 1)
-
-
                       x_test = []
                       for i in range(time_window, len(test_data)):
                           x_test.append(test_data[i-time_window:i, 0])
-
                       x_test = np.array(x_test)
                       x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
-
-
-
                       predicted_stock_price = model.predict(x_test)
                       predicted_stock_price = scaler.inverse_transform(predicted_stock_price)
-
-
-
-
                       real_data = [test_data[len(test_data)+1-time_window:len(test_data+1), 0]]
                       real_data = np.array(real_data)
                       real_data = np.reshape(real_data, (real_data.shape[0], real_data.shape[1], 1))
-
                       prediction = model.predict(real_data)
                       prediction = scaler.inverse_transform(prediction)
-
-
-
                       preis=float(prediction[0][0])
                       preis2=str(round(preis, 2))+ ' EUR'
                       st.subheader('Der prognostizierte Preis beträgt morgen:  ')
@@ -222,5 +171,4 @@ def app():
                       st.write('Bitte beachte, dass es sich bei dem prognostizierten Preis nur um eine Vorhersage handelt. Diese wurde mithilfe von Data-Mining Methoden generiert. Es bedeutet nicht, dass dieser Preis wirklich eintritt. ')
                     else:
                       st.subheader("Es liegen zu wenige Daten vor um eine Preisvorhersage zu generieren!")
-
 app()
