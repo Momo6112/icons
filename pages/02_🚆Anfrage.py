@@ -192,7 +192,7 @@ def app():
   benut=st.text_input("Benutzername:",st.session_state.name),          
   inhalt=st.text_input("Anfrage speichern in :")
   wunsch=inhalt.lower()
-  st.write(wunsch)
+  st.write("Deine Anfrage wurde in folgender Tabelle gespeichert:" + wunsch)
   tabe=''.join(wunsch)
  
               
