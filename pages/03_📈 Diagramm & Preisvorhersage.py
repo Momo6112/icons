@@ -52,8 +52,10 @@ def app():
         
                 with coll1:
 
-                   data_tabelle = cursor.execute(f"SELECT * FROM {boxen}")
-                   data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
+                   data_tabellecursor.execute(f"SELECT * FROM {boxen}")
+                   data_tabelle=cursor.fetchone()
+              
+                   #data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
 
                    df_diagramm= pd.DataFrame(data_tabelle)
 
@@ -140,7 +142,7 @@ def app():
                     st.subheader(preis2)
                     st.write('Bitte beachte, dass es sich bei dem prognostizierten Preis nur um einen geschätzten Preis handelt. Dieser wurde mithilfe von Data-Mining Methoden generiert. Das tatsächliche Eintreten kann jedoch nicht garantiert werden. ')
                 else:
-                    st.subheader("Es liegen zu wenige Daten vor um eine Preisvorhersage zu generieren!")
+                    st.subheader("Es liegen zu wenige Daten vor um eine Preisvorhersage zu machen!")
                 st.subheader("Du möchtest jetzt eine Verbindung buchen?")
                 st.write("[Hier geht es direkt zur Bahn-Webseite](https://www.bahn.de/)")
 app()
