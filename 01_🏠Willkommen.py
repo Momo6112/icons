@@ -248,14 +248,14 @@ def app():
                       'Wähle eine der folgenden Optionen:',
                       ("bitte auswählen",'Anmelden', 'Registrieren'))
                       sbest=st.form_submit_button("Auswählen")
-                  if option=="Einloggen":
+                  if option=="Anmelden":
                     with coll2:
                       with st.form("log"):
                           loginn=st.text_input("Benutzername: ")
                           loginp=st.text_input("Passwort: ",type="password")
-                          wunsch=st.text_input("Anfrage speichern in :")
+                          wunsch=st.text_input("Gib Deiner Anfrage einen Namen:")
                           tabe=''.join(wunsch)
-                          best=st.form_submit_button("Prüfen und Tabelle anlegen")
+                          best=st.form_submit_button("Anfrage speichern")
                       def Login(loginn,loginp): 
                           abfrage = cur.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
                           if not cur.fetchone():  # An empty result evaluates to False.
@@ -315,11 +315,11 @@ def app():
                                                   sparpreis_ohne_punkt=sparpreis_zv.replace(",",".")
                                                   preis_float=float(sparpreis_ohne_punkt)
                                                   if "Verbindung liegt in der Vergangenheit" in sparpreis_zv1: 
-                                                    st.info("Diese Verbindung liegt in der Vergangenheit. Wählen Sie eine andere Verbindung")
+                                                    st.info("Diese Verbindung liegt in der Vergangenheit. Wählen bitte eine andere Verbindung")
                                                     break
                                                   else: 
                                                       if "THA" in art_zug_zv2:
-                                                        st.info("Diese Zugverbindung wird nicht von uns unterstüzt. Bitte wählen Sie eine Verbindung der Züge von der DB.")
+                                                        st.info("Diese Zugverbindung wird nicht von uns unterstüzt. Bitte wählen eine Zugverbindung von der DB.")
                                                         break
                                                       else: 
                                                           if "VRS-Tarif" in sparpreis_zv1:
@@ -334,9 +334,9 @@ def app():
                                                                 result.to_sql(name=tabe, con=engine, if_exists="append" )
                                                                 result=result[0:0]
                                                           sleep(18)
-                                                  st.success("Sie haben die Anfrage erfolgreich gestellt")
+                                                  st.success("Du hast diese Anfrage erfolgreich gestellt")
                                                 else:
-                                                   st.warning("Sie haben bereits eine solche Tabelle angelegt")
+                                                   st.warning("Der Name dieser Anfrage existiert bereits. Bitte wähle einen Anderen.")
                                             #weiter2=st.form_submit_button("Fortfahren zum Diagramm/Preisvorhersage")
                                   if 'name' not in st.session_state:
                                       st.session_state.name =loginn
@@ -365,10 +365,10 @@ def app():
                                   result.loc[len(result)]=[eingabe,passw1]
                                   result.to_sql(name="login", con=engine, if_exists="append")
                                   result=result[0:0]
-                                  st.info("Erfolgreich registriert")
-                                  st.success("Sie können sich nun einloggen, wählen Sie dazu oben die Funktion einloggen aus")
+                                  st.info("Du hast Dich erfolgreich registriert")
+                                  st.success("Du kannst dich nun anmelden, wähl dazu oben die Option Anmelden aus")
                               else:
-                                  st.warning("Der Benutzername existiert bereits")
+                                  st.warning("Der Benutzername existiert bereits. Melde Dich bitte an.")
                       if register:   
                           add_userdata(eingabe,passw1)
                     
