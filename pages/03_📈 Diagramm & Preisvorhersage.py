@@ -52,11 +52,8 @@ def app():
         
                 with coll1:
 
-                   cursor.execute(f"SELECT * FROM {boxen}")
-                   data_tabelle=cursor.fetchone()
-              
-                   #data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
-
+                               
+                   data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
                    df_diagramm= pd.DataFrame(data_tabelle)
 
                 date_list = df_diagramm['anfrage_tag'].unique()
