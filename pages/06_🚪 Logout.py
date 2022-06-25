@@ -9,7 +9,11 @@ import streamlit_multipage
 from streamlit_multipage.multipage import MultiPage
 import streamlit as st
 from streamlit_option_menu import option_menu
-
+def load_lottieurl2(url: str):
+    r = requests.get(url)
+    if r.status_code != 200:
+        return None
+    return r.json()
 def app():
     st.write(st.session_state.name,
             "Möchten Sie sich wirklich ausloggen?")
@@ -20,8 +24,14 @@ def app():
     if ja:
         del st.session_state.name
         st.success("Sie haben sich erfolgreich ausgeloggt")
+        lottie_url_hello2 = "https://assets9.lottiefiles.com/packages/lf20_alpjfedu.json"
+ #"https://assets3.lottiefiles.com/packages/lf20_E3exCx.json"
+        lottie_hello2 = load_lottieurl(lottie_url_hello2)
+        st_lottie(lottie_hello2, key="hello")
         
     if nein:
         st.info("Nicht abgemeldet")
 app()
+load_lottieurl2("https://assets9.lottiefiles.com/packages/lf20_alpjfedu.json")
         
+#https://assets9.lottiefiles.com/packages/lf20_alpjfedu.json
