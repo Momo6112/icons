@@ -15,30 +15,23 @@ def load_lottieurl2(url: str):
      return None
      return r.json()
 
-col1,col2=st.columns(2)
-
-with col1: 
-  def app():
-      st.write(st.session_state.name,
-              "Möchten Sie sich wirklich ausloggen?")
-      with st.form("button"):
-          ja=st.form_submit_button(label="Ja")
-          nein=st.form_submit_button(label="Nein")
+def app():
+    st.write(st.session_state.name,
+            "Möchten Sie sich wirklich ausloggen?")
+    with st.form("button"):
+        ja=st.form_submit_button(label="Ja")
+        nein=st.form_submit_button(label="Nein")
         
-      if ja:
-          del st.session_state.name
-          st.success("Sie haben sich erfolgreich ausgeloggt")
-         
+    if ja:
+        del st.session_state.name
+        st.success("Sie haben sich erfolgreich ausgeloggt")
         
-      if nein:
-          st.info("Nicht abgemeldet")
+    if nein:
+        st.info("Nicht abgemeldet")
 app()
-with col2:
  
-  lottie_url_hello2 = "https://assets9.lottiefiles.com/packages/lf20_alpjfedu.json"
+lottie_url_hello2 = "https://assets9.lottiefiles.com/packages/lf20_alpjfedu.json"
  #"https://assets3.lottiefiles.com/packages/lf20_E3exCx.json"
-
-
 lottie_hello2 = load_lottieurl2(lottie_url_hello2)
 st_lottie(lottie_hello2, key="hello")
 load_lottieurl2("https://assets9.lottiefiles.com/packages/lf20_alpjfedu.json")
