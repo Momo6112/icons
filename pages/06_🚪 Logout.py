@@ -9,16 +9,7 @@ import streamlit_multipage
 from streamlit_multipage.multipage import MultiPage
 import streamlit as st
 from streamlit_option_menu import option_menu
-def load_lottieurl2(url: str):
-    f = requests.get(url)
-    if f.status_code != 200:
-        return None
-    return f.json()
-    lottie_url_hello2 = "https://assets4.lottiefiles.com/packages/lf20_7mibdcvp.json"
- #"https://assets3.lottiefiles.com/packages/lf20_E3exCx.json"
-    lottie_hello2 = load_lottieurl2(lottie_url_hello2)
-    st_lottie(lottie_hello2, key="hello") 
-load_lottieurl2("https://assets4.lottiefiles.com/packages/lf20_7mibdcvp.json")  
+
 
 def app():
     st.write(st.session_state.name,
@@ -35,4 +26,13 @@ def app():
         st.info("Nicht abgemeldet")
 app()
  
-
+def load_lottieurl2(url: str):
+    f = requests.get(url)
+    if f.status_code != 200:
+        return None
+    return f.json()
+    lottie_url_hello2 = "https://assets4.lottiefiles.com/packages/lf20_7mibdcvp.json"
+ #"https://assets3.lottiefiles.com/packages/lf20_E3exCx.json"
+    lottie_hello2 = load_lottieurl2(lottie_url_hello2)
+    st_lottie(lottie_hello2, key="hello") 
+load_lottieurl2("https://assets4.lottiefiles.com/packages/lf20_7mibdcvp.json")  
