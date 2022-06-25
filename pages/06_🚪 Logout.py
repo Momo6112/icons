@@ -10,7 +10,8 @@ from streamlit_multipage.multipage import MultiPage
 import streamlit as st
 from streamlit_option_menu import option_menu
 
-col1,col2=st.colums(2)
+col1,col2=st.columns(2)
+
 with col1: 
   def app():
       st.write(st.session_state.name,
