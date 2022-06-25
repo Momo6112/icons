@@ -255,7 +255,10 @@ def app():
                       with st.form("log"):
                           loginn=st.text_input("Benutzername: ")
                           loginp=st.text_input("Passwort: ",type="password")
-                          wunsch=st.text_input("Gib Deiner Anfrage einen Namen:")
+                          inhalt=st.text_input("Gib Deiner Anfrage einen Namen:")
+                          wunsch=inhalt.lower()
+                          st.write("Deine Anfrage wurde in folgender Tabelle gespeichert: " + wunsch)
+                
                           tabe=''.join(wunsch)
                           best=st.form_submit_button("Anfrage speichern")
                       def Login(loginn,loginp): 
@@ -381,7 +384,8 @@ def app():
         
     #st.image(image,caption="DB Ticker-App")
     #st.subheader("Beschreibung")
-    #load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_E3exCx.json")
+    #load_lottieurl("https://assets3.lottiefiles.com/packages/lf20_E3exCx.json")Gib Deiner Anfrage einen Namen:
+    
     #col1,col2,col3=st.columns(3)
     #if "einlogg" not in st.session_state:
         #st.session_state.einlogg=False
