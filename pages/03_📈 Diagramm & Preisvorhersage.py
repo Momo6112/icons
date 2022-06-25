@@ -52,7 +52,7 @@ def app():
         
                 with coll1:
 
-                   data_tabellecursor.execute(f"SELECT * FROM {boxen}")
+                   cursor.execute(f"SELECT * FROM {boxen}")
                    data_tabelle=cursor.fetchone()
               
                    #data_tabelle = pd.read_sql(f"SELECT * FROM {boxen}", conn)
