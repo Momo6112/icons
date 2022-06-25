@@ -250,7 +250,8 @@ def app():
                       sbest=st.form_submit_button("Auswählen")
                   coll1,coll2,coll3=st.columns(3)
                   if option=="Anmelden":
-                    with coll2:
+                    with coll1:
+       
                       with st.form("log"):
                           loginn=st.text_input("Benutzername: ")
                           loginp=st.text_input("Passwort: ",type="password")
