@@ -240,7 +240,7 @@ def app():
                   st.write("Reiseziel: ",station2)
                   st.write("Fahrzeit: ",zeiten_zv1)
                   st.write("Preis: ",sparpreis_zv)
-                  coll1,coll2,coll3=st.columns(3)
+                  
                   with st.container():
                     st.info("Wenn Du Deine Anfrage speichern möchten, musst Du Dich bitte zuerst anmelden bzw. registrieren.")
                     with st.form("log1"):
@@ -248,6 +248,7 @@ def app():
                       'Wähle eine der folgenden Optionen:',
                       ("bitte auswählen",'Anmelden', 'Registrieren'))
                       sbest=st.form_submit_button("Auswählen")
+                  coll1,coll2,coll3=st.columns(3)
                   if option=="Anmelden":
                     with coll2:
                       with st.form("log"):
