@@ -267,7 +267,7 @@ def app():
                               if not cur.fetchone():  # An empty result evaluates to False.
                                   st.warning("Falsches Passwort")
                               else:
-                                  st.success("Sie haben sich erfolgreich eingeloggt")
+                                  st.success("Du hast Dich erfolgreich angemeldet")
                                   def mehrereanfragen(user,wunsch):
                                               tababfrage=cursor.execute("Select anfragen.tabelle From anfragen where username=%s and tabelle=%s",[user,wunsch])
                                               if not cursor.fetchone():
