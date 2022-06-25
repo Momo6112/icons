@@ -30,8 +30,8 @@ with col1:
 app()
 with col2:
    def load_lottieurl2(url: str):
-      r = requests.get(url)
-      if r.status_code != 200:
+      f = requests.get(url)
+      if f.status_code != 200:
        return None
        return r.json()
        lottie_url_hello2 = "https://assets9.lottiefiles.com/packages/lf20_alpjfedu.json"
