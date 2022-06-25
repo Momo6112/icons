@@ -248,32 +248,25 @@ def app():
                       'Wähle eine der folgenden Optionen:',
                       ("bitte auswählen",'Anmelden', 'Registrieren'))
                       sbest=st.form_submit_button("Auswählen")
-                  if option=="Anmelden":
-                    
+                  if option=="Anmelden":  
                     with st.container:
                       with st.form("log"):
                          loginn=st.text_input("Benutzername: ")
-                         
-  
                          loginp=st.text_input("Passwort: ",type="password")
-                         
-        
-                    #best= st.checkbox(label='Anfrage speichern')
-                
-                          wunsch=st.text_input("Gib deiner Anfrage einen Namen:")
-                          tabe=''.join(wunsch)
-                          best=st.form_submit_button("Anfrage speichern")
-                          def Login(loginn,loginp): 
-                                abfrage = cur.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
-                                if not cur.fetchone():  # An empty result evaluates to False.
-                                 st.info("Kein Benutzer mit diesem Benutzernamen")
-                                else:
-                                    abfragep = cur.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginp])
-                                    if not cur.fetchone():  # An empty result evaluates to False.
-                                        st.warning("Falsches Passwort")
-                                    else:
-                                       st.success("Sie haben sich erfolgreich eingeloggt")
-                                       def mehrereanfragen(user,wunsch):
+                         wunsch=st.text_input("Gib deiner Anfrage einen Namen:")
+                         tabe=''.join(wunsch)
+                         best=st.form_submit_button("Anfrage speichern")
+                      def Login(loginn,loginp): 
+                          abfrage = cur.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
+                          if not cur.fetchone():  # An empty result evaluates to False.
+                               st.info("Kein Benutzer mit diesem Benutzernamen")
+                          else:
+                               abfragep = cur.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginp])
+                               if not cur.fetchone():  # An empty result evaluates to False.
+                                   st.warning("Falsches Passwort")
+                               else:
+                                   st.success("Sie haben sich erfolgreich eingeloggt")
+                                   def mehrereanfragen(user,wunsch):
                                               tababfrage=cursor.execute("Select anfragen.tabelle From anfragen where username=%s and tabelle=%s",[user,wunsch])
                                               if not cursor.fetchone():
                                                 result=pandas.DataFrame(columns=["username","tabelle"])   
@@ -380,7 +373,7 @@ def app():
                      if 'willen' not in st.session_state:
                          st.session_state.willen= True
                           
-                    if option=="Registrieren":
+                   if option=="Registrieren":
 
 
                       with st.form(key='form201'):
@@ -390,7 +383,7 @@ def app():
 
                        register = st.form_submit_button(label="Registrieren")
 
-                       def add_userdata(eingabe,passw1):
+                      def add_userdata(eingabe,passw1):
                               anf=cur.execute("Select login.username From login where username=%s",[eingabe])
                               if not cur.fetchone():
                                   result=pandas.DataFrame(columns=["username","passwort"])
