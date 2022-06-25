@@ -38,7 +38,6 @@ with col2:
  #"https://assets3.lottiefiles.com/packages/lf20_E3exCx.json"
       lottie_hello2 = load_lottieurl(lottie_url_hello2)
       st_lottie(lottie_hello2, key="hello")
-   
-    load_lottieurl2("https://assets9.lottiefiles.com/packages/lf20_alpjfedu.json")
+load_lottieurl2("https://assets9.lottiefiles.com/packages/lf20_alpjfedu.json")
         
 #https://assets9.lottiefiles.com/packages/lf20_alpjfedu.json
