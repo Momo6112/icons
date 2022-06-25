@@ -190,7 +190,9 @@ def app():
             st.write("Bahnkarte:", bahnkarteneu)
             
   benut=st.text_input("Benutzername:",st.session_state.name),          
-  wunsch=st.text_input("Anfrage speichern in :")
+  inhalt=st.text_input("Anfrage speichern in :")
+  wunsch=inhalt.lower()
+  st.write(wunsch)
   tabe=''.join(wunsch)
  
               
