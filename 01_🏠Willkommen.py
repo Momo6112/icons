@@ -248,25 +248,25 @@ def app():
                       'Wähle eine der folgenden Optionen:',
                       ("bitte auswählen",'Anmelden', 'Registrieren'))
                       sbest=st.form_submit_button("Auswählen")
-                  if option=="Anmelden":  
-                    with st.container:
+                  if option=="Einloggen":
+                    with coll2:
                       with st.form("log"):
-                         loginn=st.text_input("Benutzername: ")
-                         loginp=st.text_input("Passwort: ",type="password")
-                         wunsch=st.text_input("Gib deiner Anfrage einen Namen:")
-                         tabe=''.join(wunsch)
-                         best=st.form_submit_button("Anfrage speichern")
+                          loginn=st.text_input("Benutzername: ")
+                          loginp=st.text_input("Passwort: ",type="password")
+                          wunsch=st.text_input("Anfrage speichern in :")
+                          tabe=''.join(wunsch)
+                          best=st.form_submit_button("Prüfen und Tabelle anlegen")
                       def Login(loginn,loginp): 
                           abfrage = cur.execute("SELECT login.username FROM login WHERE username=%s", [loginn])
                           if not cur.fetchone():  # An empty result evaluates to False.
                                st.info("Kein Benutzer mit diesem Benutzernamen")
                           else:
-                               abfragep = cur.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginp])
-                               if not cur.fetchone():  # An empty result evaluates to False.
-                                   st.warning("Falsches Passwort")
-                               else:
-                                   st.success("Sie haben sich erfolgreich eingeloggt")
-                                   def mehrereanfragen(user,wunsch):
+                              abfragep = cur.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginp])
+                              if not cur.fetchone():  # An empty result evaluates to False.
+                                  st.warning("Falsches Passwort")
+                              else:
+                                  st.success("Sie haben sich erfolgreich eingeloggt")
+                                  def mehrereanfragen(user,wunsch):
                                               tababfrage=cursor.execute("Select anfragen.tabelle From anfragen where username=%s and tabelle=%s",[user,wunsch])
                                               if not cursor.fetchone():
                                                 result=pandas.DataFrame(columns=["username","tabelle"])   
@@ -278,7 +278,6 @@ def app():
                                                 datum=losdatum.strftime("%d.%m.%Y") 
                                                 uhrzeit_stunde=str(uhrzeit_stunde1)
                                                 uhrzeit_minuten=str(uhrzeit_minuten1)
-
                                                 uhrzeit_minuten=str(uhrzeit_minuten1)
                                                 if alter_1 in range(15,5,-1):
                                                       alter="f"
@@ -290,8 +289,6 @@ def app():
                                                               alter="e"
                                                           else: 
                                                               alter="s" 
-
-
                                                 if bahnkarteneu=="50":
                                                   bahnkarte="4"
                                                 else: 
@@ -300,12 +297,9 @@ def app():
                                                   else: 
                                                           bahnkarte="0"
                                                 while True:
-
-
                                                   url='https://reiseauskunft.bahn.de/bin/query.exe/dn?revia=yes&existOptimizePrice-deactivated=1&country=DEU&dbkanal_007=L01_S01_D001_qf-bahn-svb-kl2_lz03&start=1&protocol=https%3A&REQ0JourneyStopsS0A=1&S='+start+'&REQ0JourneyStopsSID=A%3D1%40O%3DM%C3%BCnchen+Hbf%40X%3D11558339%40Y%3D48140229%40U%3D80%40L%3D008000261%40B%3D1%40p%3D1652295202%40&REQ0JourneyStopsZ0A=1&Z='+ziel+'&REQ0JourneyStopsZID=A%3D1%40O%3DAachen+Hbf%40X%3D6091495%40Y%3D50767803%40U%3D80%40L%3D008000001%40B%3D1%40p%3D1652295202%40&date=Fr%2C+'+datum+'&time='+uhrzeit_stunde+'%3A'+uhrzeit_minuten+'&timesel=depart&returnDate=&returnTime=&returnTimesel=depart&optimize=0&auskunft_travelers_number=1&tariffTravellerType.1='+alter+'&tariffTravellerReductionClass.1='+bahnkarte+'&tariffClass=2&rtMode=DB-HYBRID&externRequest=yes&HWAI=JS%21js%3Dyes%21ajax%3Dyes%21&externRequest=yes&HWAI=JS%21js%3Dyes%21ajax%3Dyes%21#hfsseq1|gl.0263982.1652621988'
                                                   source=requests.get(url)
                                                   soup = BeautifulSoup(source.text,"html.parser")
-
                                                   zugverbindungen=soup.find("div", class_= "overviewConnection")
                                                   zugverbindungen1=zugverbindungen.find("div", class_="connectionRoute")
                                                   station1=zugverbindungen1.find("div", class_="station first").get_text(strip=True)
@@ -320,27 +314,18 @@ def app():
                                                   sparpreis_zv=sparpreis_zv1.replace("€","")
                                                   sparpreis_ohne_punkt=sparpreis_zv.replace(",",".")
                                                   preis_float=float(sparpreis_ohne_punkt)
-
-
-
                                                   if "Verbindung liegt in der Vergangenheit" in sparpreis_zv1: 
-                                                    st.info("Diese Verbindung liegt in der Vergangenheit. Wähle eine andere Verbindung")
+                                                    st.info("Diese Verbindung liegt in der Vergangenheit. Wählen Sie eine andere Verbindung")
                                                     break
-
                                                   else: 
                                                       if "THA" in art_zug_zv2:
-
-                                                        st.info("Diese Zugverbindung wird nicht von uns unterstüzt. Bitte wählen eine Zugverbindung von der DB.")
+                                                        st.info("Diese Zugverbindung wird nicht von uns unterstüzt. Bitte wählen Sie eine Verbindung der Züge von der DB.")
                                                         break
-
                                                       else: 
                                                           if "VRS-Tarif" in sparpreis_zv1:
-
                                                             st.info("Hier ist kein Vergleich notwendig, da diese Verbindung zu VRS-Tarifen angeboten wird.")
                                                             break 
-
                                                           else:
-
                                                                 anfrage_tage=time.strftime("%d.%m")
                                                                 anfrage_zeit=time.strftime("%H:%M")
                                                                 anfrage_komplett=time.strftime("%d.%m. %H:%M")
@@ -348,41 +333,31 @@ def app():
                                                                 result.loc[len(result)]=[anfrage_tage,anfrage_zeit, anfrage_komplett,station1,station2,zeiten_zv1,preis_float]
                                                                 result.to_sql(name=tabe, con=engine, if_exists="append" )
                                                                 result=result[0:0]
-
-
                                                           sleep(18)
-
                                                   st.success("Sie haben die Anfrage erfolgreich gestellt")
                                                 else:
                                                    st.warning("Sie haben bereits eine solche Tabelle angelegt")
-
                                             #weiter2=st.form_submit_button("Fortfahren zum Diagramm/Preisvorhersage")
-
-
                                   if 'name' not in st.session_state:
                                       st.session_state.name =loginn
                                   if 'passw' not in st.session_state:
                                       st.session_state.passw=loginp
                                   mehrereanfragen(benut,tabe)
                                                                      
-                                    
 
-                                  
-                    if best:  
-                     Login(loginn,loginp)
-                     if 'willen' not in st.session_state:
-                         st.session_state.willen= True
+
+
+                   if best:
+                     if best:
+                       Login(loginn,loginp)
+                       if 'willen' not in st.session_state:
+                           st.session_state.willen= True
                           
-                   if option=="Registrieren":
-
-
+                  if option=="Registrieren":
                       with st.form(key='form201'):
                        eingabe=st.text_input("Benutzername:")
                        passw1=st.text_input("Passwort:",type="password")
-
-
                        register = st.form_submit_button(label="Registrieren")
-
                       def add_userdata(eingabe,passw1):
                               anf=cur.execute("Select login.username From login where username=%s",[eingabe])
                               if not cur.fetchone():
@@ -391,21 +366,15 @@ def app():
                                   result.to_sql(name="login", con=engine, if_exists="append")
                                   result=result[0:0]
                                   st.info("Erfolgreich registriert")
-                                  st.success("Sie können sich nun einloggen, wähle dazu oben die Option anmelden aus")
-
+                                  st.success("Sie können sich nun einloggen, wählen Sie dazu oben die Funktion einloggen aus")
                               else:
                                   st.warning("Der Benutzername existiert bereits")
-
-                       if register:   
-                            add_userdata(eingabe,passw1)
+                      if register:   
+                          add_userdata(eingabe,passw1)
                     
-
        
-
     #engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy@dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com/dbticket')
     #cursor = conn.cursor()
-
-
    
         
     #st.image(image,caption="DB Ticker-App")
@@ -472,7 +441,6 @@ def app():
          #eingabe=st.text_input("Benutzername:")
          #passw1=st.text_input("Passwort:",type="password")
         
-
          #register = st.form_submit_button(label="Registrieren")
         
         #def add_userdata(eingabe,passw1):
@@ -492,4 +460,3 @@ def app():
         #if register:   
             #add_userdata(eingabe,passw1)
 app()
-
