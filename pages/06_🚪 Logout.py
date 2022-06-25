@@ -32,12 +32,12 @@ with col2:
    def load_lottieurl2(url: str):
       r = requests.get(url)
       if r.status_code != 200:
-      return None
-      return r.json()
-      lottie_url_hello2 = "https://assets9.lottiefiles.com/packages/lf20_alpjfedu.json"
+       return None
+       return r.json()
+       lottie_url_hello2 = "https://assets9.lottiefiles.com/packages/lf20_alpjfedu.json"
  #"https://assets3.lottiefiles.com/packages/lf20_E3exCx.json"
-      lottie_hello2 = load_lottieurl2(lottie_url_hello2)
-      st_lottie(lottie_hello2, key="hello")
+       lottie_hello2 = load_lottieurl2(lottie_url_hello2)
+       st_lottie(lottie_hello2, key="hello")
     
  load_lottieurl2("https://assets9.lottiefiles.com/packages/lf20_alpjfedu.json")
         
