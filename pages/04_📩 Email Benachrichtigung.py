@@ -67,7 +67,7 @@ def app():
           for tabelle in prei:
               liste.append(tabelle[0])
       #liste.append(tabell2[0])
-      st.info(liste)
+      
       
     emailteil1=st.text_input("Gib Deinen Emailnamen ein.")
     emaildomains=["@gmail.com","@gmx.de","@web.de"]
@@ -97,13 +97,13 @@ def app():
              if submit_buttonpreis:
                   
                  st.write("Du erhälst eine Email Benachrichtung, wenn der Preis unter",preisangabe ,"€ fällt") 
-                 for i in range(len(liste)):
+                 for i in range(len(df_diagramm)):
                      if [i]<=preisangabe_float:
                          yag.send(to=ganzeemail,
                         subject='Wunschpreis',
                         contents=contents)
                      else:
-                        if preisangabe_float>liste[i]:
+                        if preisangabe_float>df_diagramm[i]:
                             st.write("Deine Kaufbereitschaft ist sehr hoch")
     
 app()
