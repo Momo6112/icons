@@ -80,9 +80,11 @@ def app():
     contents = [
             "Hallo :)"
              "\n" 
-            "Der Preis Ihrer favoritisierten Verbindung ist auf Ihren Wunschpreis gefallen."
+            "Der Preis Deiner favoritisierten Verbindung ist auf Deinen Wunschpreis gefallen."
             "\n"
-            "Kaufen Sie sich also am besten direkt ein Ticket auf der Seite der DeutschenBahn."
+            "Kaufe Dir also am besten direkt ein Ticket auf der Seite der DeutschenBahn."
+            "\n"
+            "Hier gehts zur Webseite: https://www.bahn.de "
             "\n"
             "Freundliche Grüße und eine gute Fahrt!"
             "\n"
@@ -100,7 +102,7 @@ def app():
                  st.write("Du erhälst eine Email Benachrichtung, wenn der Preis unter",preisangabe ,"€ fällt") 
                  preisauswahl=cursor.execute(f"SELECT preis FROM {boxen1} where preis <= {preisangabe_float}",conn)
                  if not cursor.fetchone():
-                   st.info(" Der Preis liegt noch nicht drunter")
+                   st.info(" Der Preis liegt noch nicht unter Deinem Wunschpreis.")
                  else:
                        yag.send(to=ganzeemail,
                        subject='Wunschpreis',
