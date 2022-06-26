@@ -92,18 +92,19 @@ def app():
                         
     preisangabe = st.number_input("Dein gewünschter Höchstpreis:")
     preisangabe_float=float(preisangabe)
+    preisauswahl=cursor.execute(f"SELECT preis FROM {boxen1},where preis <= {preisangabe_float}",conn)
     with st.form(key='form1'):
              submit_buttonpreis = st.form_submit_button(label='Benachrichtige mich')    
              if submit_buttonpreis:
                   
                  st.write("Du erhälst eine Email Benachrichtung, wenn der Preis unter",preisangabe ,"€ fällt") 
-                 for i in range(len(df_diagramm)):
-                     if df_diagramm<=preisangabe_float:
-                         yag.send(to=ganzeemail,
+                 preisauswahl=cursor.execute(f"SELECT preis FROM {boxen1},where preis <= {preisangabe_float}",conn)
+                  if not cursor.fetchone()
+                    st.info(" Der Preis liegt noch nicht drunter")
+                  else:
+                        yag.send(to=ganzeemail,
                         subject='Wunschpreis',
                         contents=contents)
-                     else:
-                        if preisangabe_float>df_diagramm[i]:
-                            st.write("Deine Kaufbereitschaft ist sehr hoch")
+                     
     
 app()
