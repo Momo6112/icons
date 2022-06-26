@@ -206,10 +206,10 @@ def app():
          if bahnkarteneu=="25 in 2.Klasse":
             bahnkarte="2"
          else: 
-            if bahnkarte="50 in 1.Klasse"
+            if bahnkarte=="50 in 1.Klasse"
                bahnkarte="3"
             else :
-              if bahnkarte="50 in 2.Klasse"
+              if bahnkarte=="50 in 2.Klasse"
                  bahnkarte="4"
               else bahnkarte="0"
             
