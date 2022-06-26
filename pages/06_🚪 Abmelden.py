@@ -22,7 +22,7 @@ def load_lottieurl(url: str):
    st_lottie(lottie_hello2, key="hello")
     
 def app():
-    name2=st.text_input_("loginname:" )
+    name2=st.text_input("loginname:" )
     st.write(name2,"Möchten Sie sich wirklich ausloggen?")
     with st.form("button"):
         ja=st.form_submit_button(label="Ja")
