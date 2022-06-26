@@ -177,7 +177,7 @@ def app():
             bahnkarteneu=st.selectbox("Bahnkarte:", bahnkarteliste)
             st.write("Bahnkarte:", bahnkarteneu)
             klasse=st.selectbox("In welcher Klasse willst Du fahren:",klassenliste)
-            st.write("Du willst folgender Klasse fahren: ",klasse)
+            st.write("Deine ausgewählte Klasse: ",klasse)
 
     submit_buttonhome = st.checkbox(label='Bestätigen')     
     if submit_buttonhome:
