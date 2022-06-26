@@ -278,7 +278,7 @@ def app():
                                     st.info(tababfrage)
                                     if not cur.fetchone():
                                       result=pandas.DataFrame(columns=["username","tabelle"])   
-                                      result.loc[len(result)]=[benut,wunsch]
+                                      result.loc[len(result)]=[loginn,wunsch]
                                       result.to_sql(name="anfragen", con=engine, if_exists="append")
                                       result=result[0:0]
                                       start=option
