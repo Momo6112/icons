@@ -17,6 +17,7 @@ from bs4 import BeautifulSoup
 import time
 import bcrypt
 import pandas as pd
+from time import sleep
 
 
 conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com",
@@ -309,19 +310,42 @@ def app():
                                       sparpreis_zv=sparpreis_zv1.replace("€","")
                                       sparpreis_ohne_punkt=sparpreis_zv.replace(",",".")
                                       preis_float=float(sparpreis_ohne_punkt)
-                                      anfrage_tag=time.strftime("%d.%m.")
-                                      anfrage_uhrzeit=time.strftime("%H:%M")
-                                      anfrage_komplett=time.strftime("%d.%m.%H:%M")
-                                      result1=pandas.DataFrame(columns=["anfrage_tag","anfrage_uhrzeit","anfrage_komplett","startbahnhof", "zielbahnhof","fahrzeit","preis"])
-                                      result1.loc[len(result1)]=[anfrage_tag,anfrage_uhrzeit, anfrage_komplett,station1,station2,zeiten_zv1,preis_float]
-                                      result1.to_sql(name=wunsch, con=engine, if_exists="append")
-                                      result1=result1[0:0]
-                                      st.success("Du hast diese Anfrage erfolgreich gestellt")
-                                    else:
-                                       st.warning("Der Name dieser Anfrage existiert bereits. Bitte wähle einen Anderen.")
-                                  mehrereanfragen(loginn,wunsch)
+                                      if "Verbindung liegt in der Vergangenheit" in sparpreis_zv1: 
+                                        st.info("Diese Verbindung liegt in der Vergangenheit. Wählen Sie eine andere Verbindung")
+                                        break
 
-                                  #weiter2=st.form_submit_button("Fortfahren zum Diagramm/Preisvorhersage")
+                                      else: 
+                                          if "THA" in art_zug_zv2:
+                      
+                                            st.info("Diese Zugverbindung wird nicht von uns unterstüzt. Bitte wählen Sie eine Verbindung der Züge von der DB.")
+                                            break
+
+                                          else: 
+                                             if "VRS-Tarif" in sparpreis_zv1:
+                            
+                                               st.info("Hier ist kein Vergleich notwendig, da diese Verbindung zu VRS-Tarifen angeboten wird.")
+                                               break 
+                          
+                                             else:
+                                
+                                                 anfrage_tage=time.strftime("%d.%m")
+                                                 anfrage_zeit=time.strftime("%H:%M")
+                                                 anfrage_komplett=time.strftime("%d.%m. %H:%M")
+                                                 result=pandas.DataFrame(columns=["anfrage_tag","anfrage_uhrzeit","anfrage_komplett","startbahnhof", "zielbahnhof","fahrzeit","preis"])
+                                                 result.loc[len(result)]=[anfrage_tage,anfrage_zeit, anfrage_komplett,station1,station2,zeiten_zv1,preis_float]
+                                                 result.to_sql(name=tabe, con=engine, if_exists="append" )
+                                                 result=result[0:0]
+                                
+                                
+                                             sleep(18)
+
+                    st.success("Sie haben die Anfrage erfolgreich gestellt")
+                    st.success("Du hast diese Anfrage erfolgreich gestellt")
+                  else:
+                      st.warning("Der Name dieser Anfrage existiert bereits. Bitte wähle einen Anderen.")
+                                   
+                                  mehrereanfragen(loginn,wunsch)
+#weiter2=st.form_submit_button("Fortfahren zum Diagramm/Preisvorhersage")
                                       
                                   if 'name' not in st.session_state:
                                         st.session_state.name =loginn
@@ -333,11 +357,11 @@ def app():
 
 
 
-                    if best:
-                      if best:
-                        Login(loginn,loginp)
-                        if 'willen' not in st.session_state:
-                             st.session_state.willen= True
+                  
+                  if best:
+                    Login(loginn,loginp)
+                    if 'willen' not in st.session_state:
+                       st.session_state.willen= True
                           
                   if option=="Registrieren":
                       with st.form(key='form201'):
