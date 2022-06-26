@@ -88,7 +88,7 @@ def app():
                         
     preisangabe = st.number_input("Dein gewünschter Höchstpreis:")
     preisangabe_float=float(preisangabe)
-     with st.form(key='form1'):
+    with st.form(key='form1'):
              submit_buttonpreis = st.form_submit_button(label='Benachrichtige mich')    
              if submit_buttonpreis:
                   
