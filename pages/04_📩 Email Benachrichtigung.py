@@ -32,48 +32,13 @@ from re import X
 from telnetlib import DO
 from typing import Collection
 import smtplib, ssl
-
 conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com",
                       database="dbticket", 
                       user="dbticket_user", 
                       password="Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy")
-
 engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy@dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com/dbticket')
 cursor = conn.cursor()
-
 def app(): 
-  
-    coll1,coll2,coll3,coll4=st.columns(4)
-     
-    with coll1:
-            loginname=st.text_input("Login: ")
-    with coll2:
-        loginpassw=st.text_input("Passwort:",type="password")
-        anfragenlistebenutzer=[]
-    with st.container():
-        abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
-        if not cursor.fetchone():  # An empty result evaluates to False.
-            st.write("Kein Benutzer mit diesem Benutzernamen")
-        else:
-            abfragep = cursor.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginpassw])
-            if not cursor.fetchone():  # An empty result evaluates to False.
-                st.write("Falsches Passwort")
-            else:
-                st.success("Erfolgreich eingeloggt")
-                richtigentabellen=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [loginname])
-                alleanfragen=cursor.fetchall()
-                if alleanfragen==None:
-                    st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
-                else:
-                    listes=[]
-                    for b in alleanfragen:
-                        liste=b[0]
-                        listes.append(liste)                   
-                        boxen=st.selectbox("Tabelle: ", listes)
-                
-                    
-                    st.write("\n")
-  
     st.subheader("Benachrichtigung anfordern")
     anfragenlistebenutzer=[]
     collll1,collll2,collll3,collll4=st.columns(4)
@@ -102,11 +67,9 @@ def app():
       
     emailteil1=st.text_input("Gib Deinen Emailnamen ein.")
     emaildomains=["@gmail.com","@gmx.de","@web.de"]
-
     option = st.selectbox('Wähle Deine Email Domain aus.', emaildomains)
     ganzeemail=emailteil1+option
     
-
     port = 587  # For starttls
     smtp_server = "smtp.gmail.com"
     yag = yagmail.SMTP("dbpriceapp@gmail.com","jeedmppkysrivewz")
@@ -125,13 +88,14 @@ def app():
                         
     preisangabe = st.number_input("Dein gewünschter Höchstpreis:")
     preisangabe_float=float(preisangabe)
-    with st.form(key='form1'):
-            submit_buttonpreis = st.form_submit_button(label='Benachrichtige mich')    
-            if submit_buttonpreis:
-                st.write("Du erhälst eine Email Benachrichtung, wenn der Preis unter",preisangabe ,"€ fällt") 
-                for i in range(len(liste)):
-                    if [i]<=preisangabe_float:
-                        yag.send(to=ganzeemail,
+     with st.form(key='form1'):
+             submit_buttonpreis = st.form_submit_button(label='Benachrichtige mich')    
+             if submit_buttonpreis:
+                  
+                 st.write("Du erhälst eine Email Benachrichtung, wenn der Preis unter",preisangabe ,"€ fällt") 
+                 for i in range(len(liste)):
+                     if [i]<=preisangabe_float:
+                         yag.send(to=ganzeemail,
                         subject='Wunschpreis',
                         contents=contents)
                     else:
