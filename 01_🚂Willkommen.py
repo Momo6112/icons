@@ -150,7 +150,7 @@ def app():
     st.header("Anfragen")
     col1,col2,col3=st.columns(3)
 
-    bahnkarteliste=["Nicht ausgewählt","25 in 1.Klasse","25 in 2.Klasse","50 in 1.Klasse","50 in 2.Klasse","Nein"]
+    bahnkarteliste=["Nicht ausgewählt","25 in der 1.Klasse","25 in der 2.Klasse","50 in der 1.Klasse","50 in der 2.Klasse","Nein"]
 
     klassenliste=["Nicht ausgewählt","1","2"]
     optionliste.sort()
@@ -200,16 +200,16 @@ def app():
               else: 
                   alter="s" 
                   
-      if bahnkarteneu=="25 in 1.Klasse":
+      if bahnkarteneu=="25 in der 1.Klasse":
          bahnkarte="1"
       else: 
-         if bahnkarteneu=="25 in 2.Klasse":
+         if bahnkarteneu=="25 in der 2.Klasse":
             bahnkarte="2"
          else: 
-            if bahnkarteneu=="50 in 1.Klasse":
+            if bahnkarteneu=="50 in der 1.Klasse":
                bahnkarte="3"
             else :
-              if bahnkarteneu=="50 in 2.Klasse":
+              if bahnkarteneu=="50 in der 2.Klasse":
                  bahnkarte="4"
               else:
                 bahnkarte="0"
