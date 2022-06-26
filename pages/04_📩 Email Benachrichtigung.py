@@ -98,7 +98,7 @@ def app():
              if submit_buttonpreis:
                   
                  st.write("Du erhälst eine Email Benachrichtung, wenn der Preis unter",preisangabe ,"€ fällt") 
-                 preisauswahl=cursor.execute(f"SELECT preis FROM {boxen1},where preis <= {preisangabe_float}",conn)
+                 preisauswahl=cursor.execute(f"SELECT preis FROM {boxen1} where preis <= {preisangabe_float}",conn)
                  if not cursor.fetchone():
                    st.info(" Der Preis liegt noch nicht drunter")
                  else:
