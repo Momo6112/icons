@@ -11,7 +11,7 @@ import plotly.express as px
 from tensorflow import keras 
 from keras.models import Sequential
 from keras.layers import Dense, LSTM, Dropout
-st.title("Preisvorhersage/Diagramm")
+st.title("test")
 conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com",
                       database="dbticket", 
                       user="dbticket_user", 
