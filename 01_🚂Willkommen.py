@@ -283,7 +283,7 @@ def app():
                                   st.warning("Falsches Passwort")
                               else:
                                   st.success("Du hast Dich erfolgreich angemeldet")
-                                  def mehrereanfragen(loginn,loginp):
+                                  def mehrereanfragen(loginn,wunsch):
                                     
                                     tababfrage=cur.execute("Select anfragen.tabelle From anfragen where username=%s and tabelle=%s",[loginn,wunsch])
                                     st.info(tababfrage)
@@ -302,6 +302,7 @@ def app():
                                       st.success("Du hast diese Anfrage erfolgreich gestellt")
                                     else:
                                        st.warning("Der Name dieser Anfrage existiert bereits. Bitte wähle einen Anderen.")
+                                  mehrereanfragen(loginn,wunsch)
 
                                   #weiter2=st.form_submit_button("Fortfahren zum Diagramm/Preisvorhersage")
                                       
