@@ -303,6 +303,7 @@ def app():
                                       sparpreis_zv=sparpreis_zv3.replace("ab","€")
                                       anfrage_tag=time.strftime("%d.%m.")
                                       anfrage_uhrzeit=time.strftime("%H:%M")
+                                      anfrage_komplett=time.strftime("%d.%m.%H:%M")
                                       result1=pandas.DataFrame(columns=["anfrage_tag","anfrage_uhrzeit","anfrage_komplett","startbahnhof", "zielbahnhof","fahrzeit","preis"])
                                       result1.loc[len(result1)]=[anfrage_tag,anfrage_uhrzeit, anfrage_komplett,station1,station2,zeiten_zv1,preis_float]
                                       result1.to_sql(name=wunsch, con=engine, if_exists="append")
