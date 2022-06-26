@@ -98,7 +98,7 @@ def app():
                   
                  st.write("Du erhälst eine Email Benachrichtung, wenn der Preis unter",preisangabe ,"€ fällt") 
                  for i in range(len(df_diagramm)):
-                     if [i]<=preisangabe_float:
+                     if df_diagramm[i]<=preisangabe_float:
                          yag.send(to=ganzeemail,
                         subject='Wunschpreis',
                         contents=contents)
