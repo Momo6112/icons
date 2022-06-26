@@ -45,34 +45,34 @@ def app():
   
     coll1,coll2,coll3,coll4=st.columns(4)
      
-  with coll1:
-        loginname=st.text_input("Login: ")
-  with coll2:
-    loginpassw=st.text_input("Passwort:",type="password")
-    anfragenlistebenutzer=[]
-  with st.container():
-    abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
-    if not cursor.fetchone():  # An empty result evaluates to False.
-        st.write("Kein Benutzer mit diesem Benutzernamen")
-    else:
-        abfragep = cursor.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginpassw])
+    with coll1:
+            loginname=st.text_input("Login: ")
+    with coll2:
+        loginpassw=st.text_input("Passwort:",type="password")
+        anfragenlistebenutzer=[]
+    with st.container():
+        abfrage = cursor.execute("SELECT login.username FROM login WHERE username=%s", [loginname])
         if not cursor.fetchone():  # An empty result evaluates to False.
-            st.write("Falsches Passwort")
+            st.write("Kein Benutzer mit diesem Benutzernamen")
         else:
-            st.success("Erfolgreich eingeloggt")
-            richtigentabellen=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [loginname])
-            alleanfragen=cursor.fetchall()
-            if alleanfragen==None:
-                st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
+            abfragep = cursor.execute("""SELECT login.passwort FROM login WHERE passwort=%s""", [loginpassw])
+            if not cursor.fetchone():  # An empty result evaluates to False.
+                st.write("Falsches Passwort")
             else:
-                listes=[]
-                for b in alleanfragen:
-                  liste=b[0]
-                  listes.append(liste)                   
-                boxen=st.selectbox("Tabelle: ", listes)
-               
+                st.success("Erfolgreich eingeloggt")
+                richtigentabellen=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [loginname])
+                alleanfragen=cursor.fetchall()
+                if alleanfragen==None:
+                    st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
+                else:
+                    listes=[]
+                    for b in alleanfragen:
+                        liste=b[0]
+                        listes.append(liste)                   
+                        boxen=st.selectbox("Tabelle: ", listes)
                 
-                st.write("\n")
+                    
+                    st.write("\n")
   
     st.subheader("Benachrichtigung anfordern")
     anfragenlistebenutzer=[]
