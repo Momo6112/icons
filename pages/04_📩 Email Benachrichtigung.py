@@ -46,10 +46,8 @@ def app():
     anfragenlistebenutzer=[]
     collll1,collll2,collll3,collll4=st.columns(4)
     with collll1:
-      user2=st.text_input("Benutzer:",st.session_state.name)
-      #st.write("Benutzername:",user)
-      richtigentabellen1=cursor.execute("Select anfragen.tabelle FROM anfragen WHERE username=%s", [st.session_state.name])
-                                        #=%s", [st.session_state.name])
+      user=st.text_input("Benutzer:",st.session_state.name)
+      richtigentabellen1=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [st.session_state.name])
       alleanfragen1=cursor.fetchall()
       if alleanfragen1==None:
         st.info("Zu diesem Benutzernamen gibt es noch keine Anfrage. Bitte stelle eine Anfrage.") 
