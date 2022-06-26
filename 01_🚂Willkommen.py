@@ -271,8 +271,8 @@ def app():
                                   st.warning("Falsches Passwort")
                               else:
                                   st.success("Du hast Dich erfolgreich angemeldet")
-                                  def mehrereanfragen(user,wunsch):
-                                              tababfrage=cursor.execute("Select anfragen.tabelle From anfragen where username=%s and tabelle=%s",[user,wunsch])
+                                  def mehrereanfragen(loginn,loginp):
+                                              tababfrage=cursor.execute("Select anfragen.tabelle From anfragen where username=%s and tabelle=%s",[loginn,loginp])
                                               if not cursor.fetchone():
                                                 result=pandas.DataFrame(columns=["username","tabelle"])   
                                                 result.loc[len(result)]=[benut,wunsch]
@@ -347,7 +347,7 @@ def app():
                                       st.session_state.name =loginn
                                   if 'passw' not in st.session_state:
                                       st.session_state.passw=loginp
-                                  mehrereanfragen(loginn,loginp)
+                                 mehrereanfragen(user,loginp)
                                                                      
 
 
