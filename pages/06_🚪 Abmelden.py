@@ -22,7 +22,7 @@ def load_lottieurl2(url: str):
   load_lottieurl2("https://assets4.lottiefiles.com/packages/lf20_7mibdcvp.json")  
     
 def app():
-    st.write(st.session_state.name,"Möchten Sie sich wirklich ausloggen?")
+    st.write("ich","Möchten Sie sich wirklich ausloggen?")
     with st.form("button"):
         ja=st.form_submit_button(label="Ja")
         nein=st.form_submit_button(label="Nein")
