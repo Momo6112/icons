@@ -59,7 +59,7 @@ def app():
             anfragenlistebenutzer.append(tabell[0])
       boxen1=st.selectbox("Für folgende Anfrage:", anfragenlistebenutzer)
       st.write(boxen1)
-      tabell2=cursor.execute("SELECT * FROM test_tabelle_pv")
+      tabell2=cursor.execute("SELECT * FROM test_katja2")
       #tabell2=cursor.execute("SELECT * FROM %s",[boxen1])
       #tabell2=cursor.execute(f'SELECT * FROM {boxen1}')
       prei=cursor.fetchall()
