@@ -14,7 +14,7 @@ from streamlit_option_menu import option_menu
 f = requests.get(url)
 if f.status_code != 200:
    return None
-return f.json()
+  return f.json()
 
 lottie_url_hello2 = "https://assets9.lottiefiles.com/packages/lf20_p4kr3lub.json"
  #"https://assets3.lottiefiles.com/packages/lf20_E3exCx.json"
