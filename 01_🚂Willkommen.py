@@ -223,6 +223,7 @@ def app():
       sparpreis_zv1=sparpreis_zv2.replace("Rückfahrt hinzufügen","")
       sparpreis_zv3=sparpreis_zv1.replace("\xa0","")
       sparpreis_zv=sparpreis_zv3.replace("ab","€")
+      
 
       if "Verbindung liegt in der Vergangenheit" in sparpreis_zv1: 
           st.info("Diese Verbindung liegt in der Vergangenheit. Bitte wählen eine andere Verbindung.")
