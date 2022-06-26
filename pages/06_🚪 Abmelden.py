@@ -16,11 +16,10 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
-st.write(strings)
-    lottie_url_hello = "https://assets9.lottiefiles.com/packages/lf20_p4kr3lub.json"
+lottie_url_hello = "https://assets9.lottiefiles.com/packages/lf20_p4kr3lub.json"
  #"https://assets3.lottiefiles.com/packages/lf20_E3exCx.json"
-    lottie_hello = load_lottieurl(lottie_url_hello)
-    st_lottie(lottie_hello, key="hello")
+lottie_hello = load_lottieurl(lottie_url_hello)
+st_lottie(lottie_hello, key="hello")
     
 def app():
     st.write(st.session_state.name,
