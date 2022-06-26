@@ -29,7 +29,7 @@ def app():
         nein=st.form_submit_button(label="Nein")
         
     if ja:
-        del st.name2
+        del name2
         st.success("Sie haben sich erfolgreich ausgeloggt")
         
     if nein:
