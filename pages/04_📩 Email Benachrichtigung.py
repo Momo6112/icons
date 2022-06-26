@@ -53,20 +53,21 @@ def app():
                                         #=%s", [st.session_state.name])
       alleanfragen1=cursor.fetchall()
       if alleanfragen1==None:
-        st.info("Zu diesem Benutzernamen gibt es noch keine Tabelle") 
+        st.info("Zu diesem Benutzernamen gibt es noch keine Anfrage. Bitte stelle eine.") 
       else:
         for tabell in alleanfragen1:
             anfragenlistebenutzer.append(tabell[0])
       boxen1=st.selectbox("Für folgende Anfrage:", anfragenlistebenutzer)
       st.write(boxen1)
-      tabell2=cursor.execute("SELECT * FROM %s",[boxen1])
+      tabell2=cursor.execute("SELECT * FROM test_tabelle_pv")
+      #tabell2=cursor.execute("SELECT * FROM %s",[boxen1])
       #tabell2=cursor.execute(f'SELECT * FROM {boxen1}')
       prei=cursor.fetchall()
       df_diagramm= pd.DataFrame(tabell2)
       st.table(df_diagramm)
       liste=[]
       if prei==None:
-          st.info("Keine Tabelle vorhanden") 
+          st.info("Du hast noch keine Anfrage gestellt Keine Tabelle vorhanden") 
       else:
           for tabelle in prei:
               liste.append(tabelle[0])
