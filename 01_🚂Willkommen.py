@@ -158,10 +158,10 @@ def app():
     with col1: 
             st.subheader("Bahnhof")
             option = st.selectbox('Startbahnhof auswählen', optionliste)
-            st.write('Ihr ausgewählter Startbahnhof:', option)
+            st.write('Dein Startbahnhof:', option)
             zielbahn=st.selectbox("Zielbahnhof auswählen", optionliste)
-            st.write("Ihr Zielbahnhof ist:", zielbahn)
-            submit_buttonhome = st.checkbox(label='Bestätigen')
+            st.write("Dein Zielbahnhof:", zielbahn)
+            
     with col2:
             st.subheader("Abfahrt")
             losdatum=st.date_input('Datum', value= pd.to_datetime("today"))
@@ -179,7 +179,7 @@ def app():
             klasse=st.selectbox("In welcher Klasse willst Du fahren:",klassenliste)
             st.write("Du willst folgender Klasse fahren: ",klasse)
 
-           
+    submit_buttonhome = st.container(st.checkbox(label='Bestätigen'))     
     if submit_buttonhome:
       if 'sub' not in st.session_state:
         st.session_state.sub= True
