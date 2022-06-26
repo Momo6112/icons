@@ -297,7 +297,7 @@ def app():
                                       anfrage_komplett=time.strftime("%d.%m. %H:%M")
                                       result=pandas.DataFrame(columns=["anfrage_tag","anfrage_uhrzeit","anfrage_komplett","startbahnhof", "zielbahnhof","fahrzeit","preis"])
                                       result.loc[len(result)]=[anfrage_tage,anfrage_zeit, anfrage_komplett,station1,station2,zeiten_zv1,preis_float]
-                                      result.to_sql(name=tabe, con=engine, if_exists="append" )
+                                      result.to_sql(name=wunsch, con=engine, if_exists="append" )
                                       result=result[0:0]
                                       st.success("Du hast diese Anfrage erfolgreich gestellt")
                                     else:
