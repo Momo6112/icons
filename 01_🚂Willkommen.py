@@ -273,7 +273,7 @@ def app():
                               else:
                                   st.success("Du hast Dich erfolgreich angemeldet")
                                   def mehrereanfragen(loginn,loginp):
-                                              tababfrage=cursor.execute("Select anfragen.tabelle From anfragen where username=%s and tabelle=%s",[loginn,wunsch])
+                                             tababfrage=cursor.execute("Select anfragen.tabelle From anfragen where username=%s and tabelle=%s",[loginn,wunsch])
                                               st.info(tababfrage)
                                               if not cursor.fetchone():
                                                 result=pandas.DataFrame(columns=["username","tabelle"])   
