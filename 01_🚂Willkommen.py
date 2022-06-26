@@ -334,13 +334,13 @@ def app():
                                                   st.info("Hier ist kein Vergleich notwendig, da diese Verbindung zu VRS-Tarifen angeboten wird.")
                                                   break 
                                                 else:
-                                                      anfrage_tage=time.strftime("%d.%m")
-                                                      anfrage_zeit=time.strftime("%H:%M")
-                                                      anfrage_komplett=time.strftime("%d.%m. %H:%M")
-                                                      result=pandas.DataFrame(columns=["anfrage_tag","anfrage_uhrzeit","anfrage_komplett","startbahnhof", "zielbahnhof","fahrzeit","preis"])
-                                                      result.loc[len(result)]=[anfrage_tage,anfrage_zeit, anfrage_komplett,station1,station2,zeiten_zv1,preis_float]
-                                                      result.to_sql(name=tabe, con=engine, if_exists="append" )
-                                                      result=result[0:0]
+                                                    anfrage_tage=time.strftime("%d.%m")
+                                                    anfrage_zeit=time.strftime("%H:%M")
+                                                    anfrage_komplett=time.strftime("%d.%m. %H:%M")
+                                                    result=pandas.DataFrame(columns=["anfrage_tag","anfrage_uhrzeit","anfrage_komplett","startbahnhof", "zielbahnhof","fahrzeit","preis"])
+                                                    result.loc[len(result)]=[anfrage_tage,anfrage_zeit, anfrage_komplett,station1,station2,zeiten_zv1,preis_float]
+                                                    result.to_sql(name=tabe, con=engine, if_exists="append" )
+                                                    result=result[0:0]
                                                 sleep(18)
                                         st.success("Du hast diese Anfrage erfolgreich gestellt")
                                       else:
