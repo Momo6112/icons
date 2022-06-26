@@ -94,11 +94,11 @@ def app():
             "DB-Price-App"
             ]
                         
-    preisangabe = st.slider("Dein gewünschter Höchstpreis:")
+    preisangabe = st.number_input("Dein gewünschter Höchstpreis:")
     with st.form(key='form1'):
             submit_buttonpreis = st.form_submit_button(label='Benachrichtige mich')    
             if submit_buttonpreis:
-                st.write("Du erhälst eine Email Benachrichitung, wenn der Preis unter",preisangabe ,"€ fällt") 
+                st.write("Du erhälst eine Email Benachrichtung, wenn der Preis unter",preisangabe ,"€ fällt") 
                 for i in range(len(liste)):
                     if [i]<=preisangabe:
                         yag.send(to=ganzeemail,
