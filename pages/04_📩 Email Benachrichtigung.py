@@ -98,7 +98,7 @@ def app():
                          yag.send(to=ganzeemail,
                         subject='Wunschpreis',
                         contents=contents)
-                    else:
+                     else:
                         if preisangabe_float>liste[i]:
                             st.write("Deine Kaufbereitschaft ist sehr hoch")
     
