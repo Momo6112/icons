@@ -29,7 +29,7 @@ global cursor
 cur = conn.cursor()
 
 def app():
-    st.set_page_config("DB-Price-App","Locomotive",layout="wide")
+    st.set_page_config("DB-Price-App",page_icon="🚂",layout="wide")
     st.title("DB Price App")
     #st.info("Um diese App vollständig zu benutzen, müssen Sie sich auf der Willkommen-Seite eingeloggt haben.")
     #st.warning("Ansonsten werden Sie einige Funktionen nicht durchführen können.")
