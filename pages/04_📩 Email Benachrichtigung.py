@@ -58,10 +58,6 @@ def app():
         for tabell in alleanfragen1:
             anfragenlistebenutzer.append(tabell[0])
       boxen1=st.selectbox("Für folgende Anfrage:", anfragenlistebenutzer)
-      st.write(boxen1)
-      #tabell2=cursor.execute("SELECT * FROM test_katja2")
-      #tabell2=cursor.execute("SELECT * FROM %s",[boxen1])
-      #tabell2=cursor.execute(f'SELECT * FROM {boxen1}')
       prei=cursor.fetchall()
       df_diagramm= pd.read_sql(f"SELECT * FROM {boxen1}",conn)
       df_diagramm2=pd.DataFrame(df_diagramm)
@@ -73,7 +69,7 @@ def app():
           for tabelle in prei:
               liste.append(tabelle[0])
       #liste.append(tabell2[0])
-      st.info(tabell2)
+      #st.info(tabell2)
       
     emailteil1=st.text_input("Gib Deinen Emailnamen ein.")
     emaildomains=["@gmail.com","@gmx.de","@web.de"]
