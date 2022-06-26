@@ -67,7 +67,7 @@ def app():
           for tabelle in prei:
               liste.append(tabelle[0])
       #liste.append(tabell2[0])
-      #st.info(tabell2)
+      st.info(liste)
       
     emailteil1=st.text_input("Gib Deinen Emailnamen ein.")
     emaildomains=["@gmail.com","@gmx.de","@web.de"]
