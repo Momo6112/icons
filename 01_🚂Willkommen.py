@@ -269,7 +269,7 @@ def app():
                           loginp=st.text_input("Passwort: ",type="password")
                           inhalt=st.text_input("Gib Deiner Anfrage einen Namen:")
                           wunsch=inhalt.lower()
-                          st.write("Deine Anfrage wurde in folgender Tabelle gespeichert: " + wunsch)
+                          st.write("Deine Anfrage wurde wie folgt gespeichert: " + wunsch)
                 
                           tabe=''.join(wunsch)
                           best=st.form_submit_button("Anfrage speichern")
