@@ -11,10 +11,10 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 
 def load_lottieurl(url: str):
-    r = requests.get(url)
-    if r.status_code != 200:
+    f = requests.get(url)
+    if f.status_code != 200:
         return None
-    return r.json()
+    return f.json()
 
 lottie_url_hello = "https://assets9.lottiefiles.com/packages/lf20_p4kr3lub.json"
  #"https://assets3.lottiefiles.com/packages/lf20_E3exCx.json"
