@@ -283,6 +283,10 @@ def app():
                                   st.warning("Falsches Passwort")
                               else:
                                   st.success("Du hast Dich erfolgreich angemeldet")
+                                  result=pandas.DataFrame(columns=["username","tabelle"])
+                                  result.loc[len(result)]=[loginn,wunsch]
+                                  result.to_sql(name="anfragen", con=engine, if_exists="append")
+                                  result=result[0:0]
                                   def mehrereanfragen(loginn,wunsch):
                                     
                                     tababfrage=cur.execute("Select anfragen.tabelle From anfragen where username=%s and tabelle=%s",[loginn,wunsch])
