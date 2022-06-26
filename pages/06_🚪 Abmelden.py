@@ -22,14 +22,14 @@ def load_lottieurl(url: str):
    st_lottie(lottie_hello2, key="hello")
     
 def app():
-    st.write(st.session_state.name,
-            "Möchten Sie sich wirklich ausloggen?")
+    name2=st.text_input_("loginname:" )
+    st.write(name2,"Möchten Sie sich wirklich ausloggen?")
     with st.form("button"):
         ja=st.form_submit_button(label="Ja")
         nein=st.form_submit_button(label="Nein")
         
     if ja:
-        del st.session_state.name
+        del st.name2
         st.success("Sie haben sich erfolgreich ausgeloggt")
         
     if nein:
