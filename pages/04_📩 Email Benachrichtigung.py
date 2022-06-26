@@ -48,8 +48,7 @@ def app():
     with collll1:
       user=st.text_input("Benutzer:",st.session_state.name)
       #st.write("Benutzername:",user)
-    
-      richtigentabellen1=cursor.execute('Select anfragen.tabelle FROM anfragen WHERE username=%s',[user])
+      richtigentabellen1=cursor.execute("Select anfragen.tabelle FROM anfragen WHERE username=%s", [st.session_state.name])
                                         #=%s", [st.session_state.name])
       alleanfragen1=cursor.fetchall()
       if alleanfragen1==None:
