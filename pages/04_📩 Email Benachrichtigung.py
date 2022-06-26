@@ -38,13 +38,17 @@ conn = psycopg2.connect(host ="dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.ren
                       password="Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy")
 engine = create_engine('postgresql://dbticket_user:Nhaema5GzFDyW3j0sGHVYjfhRBu0fTvy@dpg-cajo73sgqg428kba9ikg-a.frankfurt-postgres.render.com/dbticket')
 cursor = conn.cursor()
+
+
 def app(): 
     st.subheader("Benachrichtigung anfordern")
     anfragenlistebenutzer=[]
     collll1,collll2,collll3,collll4=st.columns(4)
     with collll1:
-      user=st.text_input("Benutzer:",st.session_state.name)
-      richtigentabellen1=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [st.session_state.name])
+      loginname=st.text_input("Login: ")
+      #user=st.text_input("Benutzer:",st.session_state.name)
+      richtigentabellen1=cursor.execute("Select anfragen.tabelle from anfragen where username=%s", [loginname])
+      #%s", [st.session_state.name])
       alleanfragen1=cursor.fetchall()
       if alleanfragen1==None:
         st.info("Zu diesem Benutzernamen gibt es noch keine Anfrage. Bitte stelle eine Anfrage.") 
