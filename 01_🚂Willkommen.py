@@ -46,6 +46,7 @@ def app():
       "Zweibrücken Hbf",
       "Kassel Hbf",
       "Boppard Hbf",
+      "Berlin Hbf",             
       "Koblenz Hbf",
       "Wittlich Hbf",
       "Mainz Hbf",
