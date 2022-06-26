@@ -179,7 +179,7 @@ def app():
             klasse=st.selectbox("In welcher Klasse willst Du fahren:",klassenliste)
             st.write("Du willst folgender Klasse fahren: ",klasse)
 
-    submit_buttonhome = st.container(st.checkbox(label='Bestätigen'))     
+    submit_buttonhome = st.checkbox(label='Bestätigen')     
     if submit_buttonhome:
       if 'sub' not in st.session_state:
         st.session_state.sub= True
