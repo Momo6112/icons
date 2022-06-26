@@ -63,7 +63,7 @@ def app():
       #tabell2=cursor.execute("SELECT * FROM %s",[boxen1])
       #tabell2=cursor.execute(f'SELECT * FROM {boxen1}')
       prei=cursor.fetchall()
-      df_diagramm= pd.read_sql(f"SELECT * FROM test_tabelle_pv")
+      df_diagramm= pd.read_sql(f"SELECT * FROM {boxen1}",conn)
       df_diagramm2=pd.DataFrame(df_diagramm)
       st.table(df_diagramm)
       liste=[]
