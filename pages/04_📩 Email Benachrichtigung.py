@@ -58,6 +58,7 @@ def app():
         for tabell in alleanfragen1:
             anfragenlistebenutzer.append(tabell[0])
       boxen1=st.selectbox("Für folgende Anfrage:", anfragenlistebenutzer)
+      st.write(boxen1)
       tabell2=cursor.execute("SELECT * FROM %s",[boxen1])
       #tabell2=cursor.execute(f'SELECT * FROM {boxen1}')
       prei=cursor.fetchall()
@@ -65,7 +66,7 @@ def app():
       st.table(df_diagramm)
       liste=[]
       if prei==None:
-          st.info("Keine Tabelle vorhande") 
+          st.info("Keine Tabelle vorhanden") 
       else:
           for tabelle in prei:
               liste.append(tabelle[0])
