@@ -53,7 +53,7 @@ def app():
                                         #=%s", [st.session_state.name])
       alleanfragen1=cursor.fetchall()
       if alleanfragen1==None:
-        st.info("Zu diesem Benutzernamen gibt es noch keine Anfrage. Bitte stelle eine.") 
+        st.info("Zu diesem Benutzernamen gibt es noch keine Anfrage. Bitte stelle eine Anfrage.") 
       else:
         for tabell in alleanfragen1:
             anfragenlistebenutzer.append(tabell[0])
@@ -67,17 +67,17 @@ def app():
       st.table(df_diagramm)
       liste=[]
       if prei==None:
-          st.info("Du hast noch keine Anfrage gestellt Keine Tabelle vorhanden") 
+          st.info("Du hast noch keine Anfrage gestellt.") 
       else:
           for tabelle in prei:
               liste.append(tabelle[0])
       #liste.append(tabell2[0])
       st.info(tabell2)
       
-    emailteil1=st.text_input("Emailnamen eingeben")
+    emailteil1=st.text_input("Gib Deinen Emailnamen ein.")
     emaildomains=["@gmail.com","@gmx.de","@web.de"]
 
-    option = st.selectbox('Email Domain auswählen', emaildomains)
+    option = st.selectbox('Wähle Deine Email Domain aus.', emaildomains)
     ganzeemail=emailteil1+option
     
 
@@ -97,11 +97,11 @@ def app():
             "DB-Price-App"
             ]
                         
-    preisangabe = st.slider("Ihr gewünschter Höchstpreis:")
+    preisangabe = st.slider("Dein gewünschter Höchstpreis:")
     with st.form(key='form1'):
             submit_buttonpreis = st.form_submit_button(label='Benachrichtige mich')    
             if submit_buttonpreis:
-                st.write("Sie erhalten eine Email Benachrichitung wenn sich der Preis unter",preisangabe ,"€ befindet") 
+                st.write("Du erhälst eine Email Benachrichitung, wenn der Preis unter",preisangabe ,"€ fällt") 
                 for i in range(len(liste)):
                     if [i]<=preisangabe:
                         yag.send(to=ganzeemail,
@@ -109,6 +109,6 @@ def app():
                         contents=contents)
                     else:
                         if preisangabe>liste[i]:
-                            st.write("Ihre Kaufbereitschaft ist sehr hoch")
+                            st.write("Deine Kaufbereitschaft ist sehr hoch")
     
 app()
