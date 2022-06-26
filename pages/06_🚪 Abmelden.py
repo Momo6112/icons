@@ -9,7 +9,7 @@ import streamlit_multipage
 from streamlit_multipage.multipage import MultiPage
 import streamlit as st
 from streamlit_option_menu import option_menu
-
+import requests
 def load_lottieurl2(url: str):
   f = requests.get(url)
   if f.status_code != 200:
