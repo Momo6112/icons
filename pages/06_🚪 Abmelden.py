@@ -35,7 +35,7 @@ def app():
     if nein:
         st.info("Nicht abgemeldet")
 app()
-load_lottieurl("https://assets9.lottiefiles.com/packages/lf20_p4kr3lub.json")
+load_lottieurl2("https://assets9.lottiefiles.com/packages/lf20_p4kr3lub.json")
  
 #def load_lottieurl2(url: str):
  #   f = requests.get(url)
