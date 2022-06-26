@@ -287,7 +287,20 @@ def app():
                                     
                                     tababfrage=cur.execute("Select anfragen.tabelle From anfragen where username=%s and tabelle=%s",[loginn,wunsch])
                                     st.info(tababfrage)
-                                    if not cur.fetchone():                                      
+                                    if not cur.fetchone():
+                                      zugverbindungen=soup.find("div", class_= "overviewConnection")
+                                      zugverbindungen1=zugverbindungen.find("div", class_="connectionRoute")
+                                      station1=zugverbindungen1.find("div", class_="station first").get_text(strip=True)
+                                      station2=zugverbindungen1.find("div", class_="station stationDest").get_text(strip=True)
+                                      uhrzeit_zv1=zugverbindungen.find("div", class_= "connectionTimeSoll")
+                                      zeiten_zv1=uhrzeit_zv1.find("div", class_= "time").get_text(strip=True)
+                                      art_zug_zv1=soup.find("div", class_= "connectionData")
+                                      art_zug_zv2=art_zug_zv1.find("div", class_= "connectionBar").get_text(strip=True)
+                                      preis_zv1=zugverbindungen.find("div",class_="connectionAction").get_text(strip=True)
+                                      sparpreis_zv2=preis_zv1.replace("€","")
+                                      sparpreis_zv1=sparpreis_zv2.replace("Rückfahrt hinzufügen","")
+                                      sparpreis_zv3=sparpreis_zv1.replace("\xa0","")
+                                      sparpreis_zv=sparpreis_zv3.replace("ab","€")
                                       result1=pandas.DataFrame(columns=["anfrage_tag","anfrage_uhrzeit","anfrage_komplett","startbahnhof", "zielbahnhof","fahrzeit","preis"])
                                       result1.loc[len(result1)]=[anfrage_tage,anfrage_zeit, anfrage_komplett,station1,station2,zeiten_zv1,preis_float]
                                       result1.to_sql(name=wunsch, con=engine, if_exists="append")
