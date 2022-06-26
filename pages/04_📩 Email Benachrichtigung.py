@@ -46,7 +46,7 @@ def app():
     anfragenlistebenutzer=[]
     collll1,collll2,collll3,collll4=st.columns(4)
     with collll1:
-      user=st.text_input("Benutzer:",st.session_state.name)
+      user2=st.text_input("Benutzer:",st.session_state.name)
       #st.write("Benutzername:",user)
       richtigentabellen1=cursor.execute("Select anfragen.tabelle FROM anfragen WHERE username=%s", [st.session_state.name])
                                         #=%s", [st.session_state.name])
